@@ -14,15 +14,13 @@ module.exports = function defineCustomHook(sails) {
 
       sails.log.info('Initializing project hook... (`api/hooks/custom/`)');
 
-      // Check Stripe/Mailgun configuration (for billing and emails).
-      var IMPORTANT_STRIPE_CONFIG = ['stripeSecret', 'stripePublishableKey'];
+      // Check Mailgun configuration (for billing and emails).
       var IMPORTANT_MAILGUN_CONFIG = ['mailgunSecret', 'mailgunDomain', 'internalEmailAddress'];
-      var isMissingStripeConfig = _.difference(IMPORTANT_STRIPE_CONFIG, Object.keys(sails.config.custom)).length > 0;
       var isMissingMailgunConfig = _.difference(IMPORTANT_MAILGUN_CONFIG, Object.keys(sails.config.custom)).length > 0;
 
-      if (isMissingStripeConfig || isMissingMailgunConfig) {
+      if (isMissingMailgunConfig) {
 
-        let missingFeatureText = isMissingStripeConfig && isMissingMailgunConfig ? 'billing and email' : isMissingStripeConfig ? 'billing' : 'email';
+        let missingFeatureText = 'email';
         let suffix = '';
         if (_.contains(['silly'], sails.config.log.level)) {
           suffix =
@@ -41,12 +39,6 @@ module.exports = function defineCustomHook(sails) {
         }
 
         let problems = [];
-        if (sails.config.custom.stripeSecret === undefined) {
-          problems.push('No `sails.config.custom.stripeSecret` was configured.');
-        }
-        if (sails.config.custom.stripePublishableKey === undefined) {
-          problems.push('No `sails.config.custom.stripePublishableKey` was configured.');
-        }
         if (sails.config.custom.mailgunSecret === undefined) {
           problems.push('No `sails.config.custom.mailgunSecret` was configured.');
         }
@@ -69,18 +61,9 @@ will be disabled and/or hidden in the UI.
 ---------------------------------------------------------------------${suffix}`);
       }//ﬁ
 
-      // Set an additional config keys based on whether Stripe config is available.
-      // This will determine whether or not to enable various billing features.
-      sails.config.custom.enableBillingFeatures = !isMissingStripeConfig;
-
-      // After "sails-hook-organics" finishes initializing, configure Stripe
+      // After "sails-hook-organics" finishes initializing, configure
       // and Mailgun packs with any available credentials.
       sails.after('hook:organics:loaded', ()=>{
-
-        sails.helpers.stripe.configure({
-          secret: sails.config.custom.stripeSecret
-        });
-
         sails.helpers.mailgun.configure({
           secret: sails.config.custom.mailgunSecret,
           domain: sails.config.custom.mailgunDomain,
