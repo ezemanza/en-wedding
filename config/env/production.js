@@ -365,7 +365,7 @@ module.exports = {
   /**************************************************************************
   *                                                                         *
   * Production overrides for any custom settings specific to your app.      *
-  * (for example, production credentials for 3rd party APIs like Stripe)    *
+  * (for example, production credentials for 3rd party APIs like MailGun)    *
   *                                                                         *
   * > See config/custom.js for more info on how to configure these options. *
   *                                                                         *
@@ -376,7 +376,6 @@ module.exports = {
 
     // mailgunDomain: 'mg.example.com',
     // mailgunSecret: 'key-prod_fake_bd32301385130a0bafe030c',
-    // stripeSecret: 'sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm',
     //--------------------------------------------------------------------------
     // /\   OR, to avoid checking them in to version control, you might opt to
     // ||   set sensitive credentials like these using environment variables.
@@ -385,7 +384,6 @@ module.exports = {
     // ```
     // sails_custom__mailgunDomain=mg.example.com
     // sails_custom__mailgunSecret=key-prod_fake_bd32301385130a0bafe030c
-    // sails_custom__stripeSecret=sk_prod__fake_Nfgh82401348jaDa3lkZ0d9Hm
     // ```
     //--------------------------------------------------------------------------
 
