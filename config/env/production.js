@@ -373,7 +373,7 @@ module.exports = {
   custom: {
     baseUrl: 'https://ezeynaty.com',
     mailgunDomain: 'mg.ezeynaty.com',
-    mailgunSecret: process.env.MAIL_GUN_SECRET
+    mailgunSecret: process.env.MAILGUN_SECRET
 
     // mailgunDomain: 'mg.example.com',
     // mailgunSecret: 'key-prod_fake_bd32301385130a0bafe030c',
