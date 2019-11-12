@@ -46,7 +46,7 @@
   <body>
     <div id="page-wrap">
       <header id="page-header" class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
-        <a class="navbar-brand mr-0" href="/">Ezequiel & Natalia</a>
+        <a class="navbar-brand mr-0" href="/admin">Ezequiel & Natalia</a>
         <div class="navbar-nav flex-row">
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
@@ -54,22 +54,22 @@
           <div class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
-              <a class="dropdown-item" href="/account">Settings</a>
-              <a class="dropdown-item" href="/logout">Sign out</a>
+              <a class="dropdown-item" href="/admin/account">Settings</a>
+              <a class="dropdown-item" href="/admin/logout">Sign out</a>
             </div>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/account">Account Settings</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/logout">Sign out</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/account">Account Settings</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Sign out</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
-          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/login">Log in</a>
+          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/admin/login">Log in</a>
           <!-- Only in desktop nav -->
           <div class="form-inline d-none ml-2 d-md-block" >
-            <a class="btn btn-outline-info" href="/signup">Sign up</a>
+            <a class="btn btn-outline-info" href="/admin/signup">Sign up</a>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/signup">Sign up</a>
+          <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/admin/signup">Sign up</a>
           <% } %>
         </div>
       </header>
@@ -94,7 +94,7 @@
       <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse">
         <div class="nav">
           <% if(me) { %>
-          <small class="nav-item"><a class="nav-link text-info" href="/logout">Sign out</a></small>
+          <small class="nav-item"><a class="nav-link text-info" href="/admin/logout">Sign out</a></small>
           <% } %>
         </div>
         <small class="copy">Copyright &copy; 2019 <a target="_blank" href="NEW_APP_COMPANY_ABOUT_HREF">E&N-wedding</a>. <br class="xs-only"/>All rights reserved.</small>

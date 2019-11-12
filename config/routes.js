@@ -13,26 +13,26 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
-  'GET /':                   { action: 'view-homepage-or-redirect' },
-  'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
+  'GET /admin':                   { action: 'view-homepage-or-redirect' },
+  'GET /admin/welcome/:unused?':   { action: 'dashboard/view-welcome' },
 
-  'GET /signup':             { action: 'entrance/view-signup' },
-  'GET /email/confirm':      { action: 'entrance/confirm-email' },
-  'GET /email/confirmed':    { action: 'entrance/view-confirmed-email' },
+  'GET /admin/signup':             { action: 'entrance/view-signup' },
+  'GET /admin/email/confirm':      { action: 'entrance/confirm-email' },
+  'GET /admin/email/confirmed':    { action: 'entrance/view-confirmed-email' },
 
-  'GET /login':              { action: 'entrance/view-login' },
-  'GET /password/forgot':    { action: 'entrance/view-forgot-password' },
-  'GET /password/new':       { action: 'entrance/view-new-password' },
+  'GET /admin/login':              { action: 'entrance/view-login' },
+  'GET /admin/password/forgot':    { action: 'entrance/view-forgot-password' },
+  'GET /admin/password/new':       { action: 'entrance/view-new-password' },
 
-  'GET /account':            { action: 'account/view-account-overview' },
-  'GET /account/password':   { action: 'account/view-edit-password' },
-  'GET /account/profile':    { action: 'account/view-edit-profile' },
+  'GET /admin/account':            { action: 'account/view-account-overview' },
+  'GET /admin/account/password':   { action: 'account/view-edit-password' },
+  'GET /admin/account/profile':    { action: 'account/view-edit-profile' },
 
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
   //  ╩ ╩╩╚═╝╚═╝  ╩╚═╚═╝═╩╝╩╩╚═╚═╝╚═╝ ╩ ╚═╝  └┘   ═╩╝╚═╝╚╩╝╝╚╝╩═╝╚═╝╩ ╩═╩╝╚═╝
-  '/logout':                  '/api/v1/account/logout',
+  '/admin/logout':                  '/api/v1/account/logout',
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗

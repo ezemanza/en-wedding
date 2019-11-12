@@ -79,7 +79,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
       if (this.req.wantsJSON) {
         return;
       } else {
-        throw { redirect: '/email/confirmed' };
+        throw { redirect: '/admin/email/confirmed' };
       }
 
     } else if (user.emailStatus === 'change-requested') {
@@ -114,7 +114,7 @@ then redirect to either a special landing page (for newly-signed up users), or t
       if (this.req.wantsJSON) {
         return;
       } else {
-        throw { redirect: '/account' };
+        throw { redirect: '/admin/account' };
       }
 
     } else {

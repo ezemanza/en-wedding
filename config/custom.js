@@ -52,7 +52,6 @@ module.exports.custom = {
   *                                                                         *
   **************************************************************************/
   mailgunDomain: 'sandbox315ffb296d6045ab85befdf0503c67c4.mailgun.org',
-  mailgunSecret: '9048e001478671093f8cc83dc2ddf2b6-1df6ec32-bde708b3',
   //--------------------------------------------------------------------------
   // /\  Configure these to enable support for automated emails.
   // ||  (Important for password recovery, verification, etc.)

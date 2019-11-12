@@ -35,7 +35,7 @@
           <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Create account</ajax-button>
         </div>
       </ajax-form>
-      <p class="text-center">Have an account? <a href="/login">Sign in</a></p>
+      <p class="text-center">Have an account? <a href="/admin/login">Sign in</a></p>
     </div>
   </div>
   <div class="container" v-if="cloudSuccess">
@@ -44,7 +44,7 @@
       <hr/>
       <p>Your account is nearly ready. All you have to do is click the link we sent to <strong>{{formData.emailAddress}}</strong>.</p>
       <p>(You can still access your dashboard now, but some features will be unvavailable until we've verified your email address.)</p>
-      <p><a class="btn btn-outline-info" href="/">Go to dashboard</a></p>
+      <p><a class="btn btn-outline-info" href="/admin">Go to dashboard</a></p>
     </div>
   </div>
 </div>
