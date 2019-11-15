@@ -28,6 +28,16 @@ module.exports.routes = {
   'GET /admin/account/password':   { action: 'account/view-edit-password' },
   'GET /admin/account/profile':    { action: 'account/view-edit-profile' },
 
+  'GET /admin/guest/create':            { action: 'guest/view-create' },
+  'GET /admin/guest/edit':              { action: 'guest/view-edit' },
+  'GET /admin/guest':                   { action: 'guest/view-list' },
+
+  'GET /admin/invitation/create':            { action: 'invitation/view-create' },
+  'GET /admin/invitation/edit':              { action: 'invitation/view-edit' },
+  'GET /admin/invitation':                   { action: 'invitation/view-list' },
+
+  'GET /error': { action: 'view-error' },
+
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗

@@ -52,6 +52,20 @@
           <% if(me) { %>
           <!-- Only in desktop nav -->
           <div class="nav-item dropdown d-none d-sm-block">
+            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guests</a>
+            <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
+              <a class="dropdown-item" href="/admin/guest">List</a>
+              <a class="dropdown-item" href="/admin/guest/create">Create</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown d-none d-sm-block">
+            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Invitations</a>
+            <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
+              <a class="dropdown-item" href="/admin/invitation">List</a>
+              <a class="dropdown-item" href="/admin/invitation/create">Create</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
               <a class="dropdown-item" href="/admin/account">Settings</a>
@@ -59,7 +73,8 @@
             </div>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/account">Account Settings</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/guest">Guests</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/invitation">Invitations</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Sign out</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
@@ -91,13 +106,12 @@
 
       <%- body %>
 
-      <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse">
+      <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse d-none d-sm-flex">
         <div class="nav">
           <% if(me) { %>
           <small class="nav-item"><a class="nav-link text-info" href="/admin/logout">Sign out</a></small>
           <% } %>
         </div>
-        <small class="copy">Copyright &copy; 2019 <a target="_blank" href="NEW_APP_COMPANY_ABOUT_HREF">E&N-wedding</a>. <br class="xs-only"/>All rights reserved.</small>
       </footer>
     </div>
 
@@ -144,7 +158,14 @@
     <script src="/js/pages/entrance/login.page.js"></script>
     <script src="/js/pages/entrance/new-password.page.js"></script>
     <script src="/js/pages/entrance/signup.page.js"></script>
+    <script src="/js/pages/error.page.js"></script>
+    <script src="/js/pages/guest/create.page.js"></script>
+    <script src="/js/pages/guest/edit.page.js"></script>
+    <script src="/js/pages/guest/list.page.js"></script>
     <script src="/js/pages/homepage.page.js"></script>
+    <script src="/js/pages/invitation/create.page.js"></script>
+    <script src="/js/pages/invitation/edit.page.js"></script>
+    <script src="/js/pages/invitation/list.page.js"></script>
     <!--SCRIPTS END-->
 
     <% /* Display an overlay if the current browser is not supported.
