@@ -1,3 +1,4 @@
+/* global Guest */
 module.exports = {
 
 
@@ -17,9 +18,11 @@ module.exports = {
 
 
   fn: async function () {
-
+    const guests = await Guest.find().populate('companions').populate('invitation');
     // Respond with view.
-    return {};
+    return {
+      guests
+    };
 
   }
 

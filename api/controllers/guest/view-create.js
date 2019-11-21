@@ -1,3 +1,4 @@
+/* global Guest */
 module.exports = {
 
 
@@ -18,8 +19,12 @@ module.exports = {
 
   fn: async function () {
 
+    const availableCompanions = await Guest.find({ type: 'companion' }).populate('mainGuest');
+
     // Respond with view.
-    return {};
+    return {
+      companions: availableCompanions.filter(c => c.mainGuest.length === 0)
+    };
 
   }
 

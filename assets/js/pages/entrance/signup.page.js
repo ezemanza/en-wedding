@@ -76,11 +76,6 @@ parasails.registerPage('signup', {
         this.formErrors.confirmPassword = true;
       }
 
-      // Validate ToS agreement:
-      if(!argins.agreed) {
-        this.formErrors.agreed = true;
-      }
-
       // If there were any issues, they've already now been communicated to the user,
       // so simply return undefined.  (This signifies that the submission should be
       // cancelled.)

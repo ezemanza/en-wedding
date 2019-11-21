@@ -39,7 +39,12 @@
     <% /* Auto-injected «link» tags: */ %>
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
-    <link rel="stylesheet" href="/dependencies/fontawesome.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/all.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/brands.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/fontawesome.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/regular.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/solid.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/v4-shims.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
@@ -51,20 +56,8 @@
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
           <!-- Only in desktop nav -->
-          <div class="nav-item dropdown d-none d-sm-block">
-            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Guests</a>
-            <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
-              <a class="dropdown-item" href="/admin/guest">List</a>
-              <a class="dropdown-item" href="/admin/guest/create">Create</a>
-            </div>
-          </div>
-          <div class="nav-item dropdown d-none d-sm-block">
-            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Invitations</a>
-            <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
-              <a class="dropdown-item" href="/admin/invitation">List</a>
-              <a class="dropdown-item" href="/admin/invitation/create">Create</a>
-            </div>
-          </div>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-none d-sm-block" href="/admin/guest">Guests</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-none d-sm-block" href="/admin/invitation">Invitations</a>
           <div class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
@@ -160,12 +153,14 @@
     <script src="/js/pages/entrance/signup.page.js"></script>
     <script src="/js/pages/error.page.js"></script>
     <script src="/js/pages/guest/create.page.js"></script>
+    <script src="/js/pages/guest/details.page.js"></script>
     <script src="/js/pages/guest/edit.page.js"></script>
     <script src="/js/pages/guest/list.page.js"></script>
     <script src="/js/pages/homepage.page.js"></script>
     <script src="/js/pages/invitation/create.page.js"></script>
     <script src="/js/pages/invitation/edit.page.js"></script>
     <script src="/js/pages/invitation/list.page.js"></script>
+    <script src="/js/pages/invitation/read.page.js"></script>
     <!--SCRIPTS END-->
 
     <% /* Display an overlay if the current browser is not supported.

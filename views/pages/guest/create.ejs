@@ -1,7 +1,71 @@
 <div id="guest-create" v-cloak>
 
-  <h1>TODO: Implement this page.</h1>
-  <p>(See also <em>assets/styles/pages/guest/create.less</em>, <em>assets/js/pages/guest/create.page.js</em>, and <em>api/controllers/guest/view-create.js</em>.)</p>
+  <div class="container">
+    <h1 class="text-center">Create Guest</h1>
+    <div class="create-guest-form">
+      <hr/>
+      <ajax-form action="createGuest" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+        <div class="form-group">
+          <label for="full-name">Full name</label>
+          <input class="form-control" id="full-name" type="text"  :class="[formErrors.fullName ? 'is-invalid' : '']" v-model.trim="formData.fullName" autocomplete="name" focus-first>
+          <div class="invalid-feedback" v-if="formErrors.fullName">Please enter your full name.</div>
+        </div>
+        <div class="form-group">
+          <label for="email-address">Email address</label>
+          <input class="form-control" id="email-address" type="email"  :class="[formErrors.emailAddress ? 'is-invalid' : '']" v-model.trim="formData.emailAddress" autocomplete="email">
+          <div class="invalid-feedback" v-if="formErrors.emailAddress">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+            <label :class="[formErrors.preferredLang ? 'is-invalid' : '']">Guest Preferred Language</legend>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferredLangEnglish" id="preferredLangEnglish" value="en" v-model.trim="formData.preferredLang">
+              <label class="form-check-label" for="preferredLangEnglish">
+                English
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferredLangSpanish" id="preferredLangSpanish" value="es-AR" v-model.trim="formData.preferredLang">
+              <label class="form-check-label" for="preferredLangSpanish">
+                Spanish
+              </label>
+            </div>
+            <div class="invalid-feedback" v-if="formErrors.password">Please select a language.</div>
+          </div>
+        <div class="form-group">
+          <label :class="[formErrors.type ? 'is-invalid' : '']">Type</legend>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="typeMain" id="typeMain" value="main" v-model.trim="formData.type">
+            <label class="form-check-label" for="typeMain">
+              Main
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="typeCompanion" id="typeCompanion" value="companion" v-model.trim="formData.type">
+            <label class="form-check-label" for="typeCompanion">
+              Companion
+            </label>
+          </div>
+          <div class="invalid-feedback" v-if="formErrors.password">Please select a type.</div>
+        </div>
+        <div v-if="formData.type === 'main' && <%= companions.length > 0 %>" class="form-group">
+          <label :class="[formErrors.companions ? 'is-invalid' : '']">Companions</legend>
+
+            <% _.each(companions, function (companion) { %>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="<%= companion.id %>" value="<%= companion.id %>" v-model="formData.companions">
+                <label class="form-check-label" :for="<%= companion.id %>">
+                    <%= companion.fullName %>
+                </label>
+              </div>
+            <% }) %>
+        </div>
+        <p class="text-danger" v-if="cloudError"><small>An error occured while processing your request. Please check the information and try again.</small></p>
+        <div class="form-group">
+          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Create guest</ajax-button>
+        </div>
+      </ajax-form>
+    </div>
+  </div>
 
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

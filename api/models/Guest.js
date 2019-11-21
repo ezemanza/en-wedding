@@ -21,9 +21,8 @@ module.exports = {
 
     emailAddress: {
       type: 'string',
-      required: true,
+      required: false,
       description: 'Guest\'s email address',
-      unique: true,
       isEmail: true,
       maxLength: 200,
     },
@@ -32,6 +31,12 @@ module.exports = {
       type: 'string',
       required: true,
       isIn: ['main', 'companion']
+    },
+
+    preferredLang: {
+      type: 'string',
+      required: true,
+      isIn: ['en', 'es-AR']
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -60,8 +65,7 @@ module.exports = {
 
     invitation: {
       description: 'Guest\'s invitation',
-      model: 'invitation',
-      unique: true
+      model: 'invitation'
     }
   },
 

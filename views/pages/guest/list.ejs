@@ -1,7 +1,61 @@
 <div id="guest-list" v-cloak>
-
-  <h1>TODO: Implement this page.</h1>
-  <p>(See also <em>assets/styles/pages/guest/list.less</em>, <em>assets/js/pages/guest/list.page.js</em>, and <em>api/controllers/guest/view-list.js</em>.)</p>
-
+  <div class="alert alert-danger fade show" role="alert" v-if="cloudError">
+      An error occured while processing your request.
+      <button type="button" class="close" @click="dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="container">
+        <h1>Manage Guests</h1>
+        <hr/>
+        <button type="button" @click="create()" class="btn btn-primary mb-4">Create new guest</button>
+        <div class="table-responsive">
+          <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col" class="text-center">Has Invitation</th>
+                  <th scope="col" class="text-center">Sent Invitation</th>
+                  <th scope="col" class="text-center">Confirmed Invitation</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% _.each(guests, function (guest) { %>
+                  <tr @click="(e) => details(e, <%= guest.id %>)">
+                    <th scope="row"><%= guest.fullName %></th>
+                    <td><%= guest.type %></td>
+                    <td class="text-center">
+                      <% if (guest.invitation) { %>
+                        <i class="fas fa-check-circle text-success"></i>
+                      <% } else { %>
+                        <i class="fas fa-times-circle text-danger"></i>
+                      <% } %>
+                    </td>
+                    <td class="text-center">
+                        <% if (guest.invitation && guest.invitation.sent) { %>
+                          <i class="fas fa-check-circle text-success"></i>
+                        <% } else { %>
+                          <i class="fas fa-times-circle text-danger"></i>
+                        <% } %>
+                    </td>
+                    <td class="text-center">
+                        <% if (guest.invitation && guest.invitation.confirmed) { %>
+                          <i class="fas fa-check-circle text-success"></i>
+                        <% } else { %>
+                          <i class="fas fa-times-circle text-danger"></i>
+                        <% } %>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" @click="(e) => edit(e, <%= guest.id %>)" class="btn btn-warning btn-sm mr-3">EDIT</button>
+                        <button type="button" @click="(e) => deleteGuest(e, <%= guest.id %>)" class="btn btn-danger btn-sm">DELETE</button>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+      </div>
+  </div>
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

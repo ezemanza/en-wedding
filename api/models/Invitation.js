@@ -47,9 +47,9 @@ module.exports = {
       via: 'invitation'
     },
 
-    mainGuest: {
+    guests: {
       collection:'guest',
-      description: 'Main Guest to sen the invitation to',
+      description: 'Guests in the invitation',
       via: 'invitation'
     }
   },
