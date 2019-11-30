@@ -1,3 +1,4 @@
+/* global Invitation*/
 module.exports = {
 
 
@@ -8,19 +9,35 @@ module.exports = {
 
 
   inputs: {
-
+    id: {
+      required: true,
+      type: 'number',
+      example: 1,
+      description: 'Invitation id to delete'
+    }
   },
 
 
   exits: {
-
+    success: {
+      description: 'Guest deleted.'
+    },
+    notFound: {
+      description: 'No guest with the specified ID was found in the database.',
+      responseType: 'notFound'
+    }
   },
 
 
-  fn: async function (inputs) {
+  fn: async function ({ id }) {
 
-    // All done.
-    return;
+    var deletedInvitation = await Invitation.destroyOne({ id });
+
+    if (deletedInvitation) {
+      return;
+    } else {
+      throw 'notFound';
+    }
 
   }
 

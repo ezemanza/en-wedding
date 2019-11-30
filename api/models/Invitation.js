@@ -12,6 +12,13 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    uuid: {
+      type: 'string',
+      example: '7010e565-06d0-48c0-a9f1-98b57806dfc7',
+      description: 'Invitation UUID',
+      required: true
+    },
+
     confirmed: {
       type: 'boolean',
       description: 'Invitation confirmed or not',
@@ -44,7 +51,7 @@ module.exports = {
     confirmedGuests: {
       collection:'guest',
       description: 'Invitation confirmed for the Guest\'s in this association',
-      via: 'invitation'
+      via: 'invitationConfirmed'
     },
 
     guests: {

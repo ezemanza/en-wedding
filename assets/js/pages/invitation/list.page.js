@@ -3,7 +3,7 @@ parasails.registerPage('invitation-list', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    //…
+    cloudError: false
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -21,6 +21,34 @@ parasails.registerPage('invitation-list', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    //…
+
+    details: async function (event, id) {
+      event.stopPropagation();
+      window.location = `/admin/invitation/${id}`;
+    },
+
+    deleteInvitation: async function (event, id) {
+      event.stopPropagation();
+      await Cloud['deleteInvitation'].with({ id })
+        .tolerate(()=>{
+          this.cloudError = true;
+        });
+
+      if (!this.cloudError) {
+        window.location = '/admin/invitation';
+      }
+    },
+
+    resendInvitation: async function (event, id) {
+      event.stopPropagation();
+      await Cloud['resendInvitation'].with({ id })
+        .tolerate(()=>{
+          this.cloudError = true;
+        });
+    },
+
+    dismiss: function () {
+      this.cloudError = false;
+    }
   }
 });

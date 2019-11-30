@@ -66,7 +66,7 @@ module.exports = {
       type: inputs.type,
       preferredLang: inputs.preferredLang
     })
-    .intercept(null, 'error')
+    .intercept(() => { throw 'error'; })
     .fetch();
 
     if (inputs.companions.length) {

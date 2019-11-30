@@ -66,6 +66,11 @@ module.exports = {
     invitation: {
       description: 'Guest\'s invitation',
       model: 'invitation'
+    },
+
+    invitationConfirmed: {
+      description: 'Guest\'s invitation confirmed',
+      model: 'invitation'
     }
   },
 

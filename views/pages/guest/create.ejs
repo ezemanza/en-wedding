@@ -49,7 +49,6 @@
         </div>
         <div v-if="formData.type === 'main' && <%= companions.length > 0 %>" class="form-group">
           <label :class="[formErrors.companions ? 'is-invalid' : '']">Companions</legend>
-
             <% _.each(companions, function (companion) { %>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="<%= companion.id %>" value="<%= companion.id %>" v-model="formData.companions">

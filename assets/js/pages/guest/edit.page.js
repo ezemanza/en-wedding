@@ -71,9 +71,6 @@ parasails.registerPage('guest-edit', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    cancel: function () {
-      window.location = '/admin/guest';
-    },
 
     submittedForm: async function() {
       // Redirect to the guests list.

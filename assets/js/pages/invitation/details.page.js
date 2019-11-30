@@ -1,9 +1,9 @@
-parasails.registerPage('read', {
+parasails.registerPage('invitation-details', {
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    //…
+    invitation: {}
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -14,7 +14,11 @@ parasails.registerPage('read', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    //…
+    if (SAILS_LOCALS.invitation) {
+      this.invitation = SAILS_LOCALS.invitation;
+    } else {
+      window.location = '/admin/error';
+    }
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗

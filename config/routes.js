@@ -35,7 +35,7 @@ module.exports.routes = {
 
   'GET /admin/invitation/create':   { action: 'invitation/view-create' },
   'GET /admin/invitation/edit/:id': { action: 'invitation/view-edit' },
-  'GET /admin/invitation/:id':      { action: 'invitation/view-read' },
+  'GET /admin/invitation/:id':      { action: 'invitation/view-details' },
   'GET /admin/invitation':          { action: 'invitation/view-list' },
 
   'GET /error':                     { action: 'view-error' },
@@ -68,5 +68,9 @@ module.exports.routes = {
   'POST  /api/v1/guest/create':                           { action: 'guest/create' },
   'PUT  /api/v1/guest/edit':                              { action: 'guest/edit' },
   'DELETE  /api/v1/guest/delete':                         { action: 'guest/delete' },
+  'POST  /api/v1/invitation/create':                      { action: 'invitation/create' },
+  'PUT  /api/v1/invitation/edit':                         { action: 'invitation/edit' },
+  'DELETE  /api/v1/invitation/delete':                    { action: 'invitation/delete' },
+  'POST /api/v1/invitation/resend-email':                 { action: 'invitation/resend-email' },
 
 };

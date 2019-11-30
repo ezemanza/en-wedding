@@ -4,7 +4,7 @@ parasails.registerPage('guest-list', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    cloudError: ''
+    cloudError: false
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -22,8 +22,10 @@ parasails.registerPage('guest-list', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    create: function () {
-      window.location = '/admin/guest/create';
+
+    details: async function (event, id) {
+      event.stopPropagation();
+      window.location = `/admin/guest/${id}`;
     },
 
     deleteGuest: async function (event, id) {
@@ -40,16 +42,6 @@ parasails.registerPage('guest-list', {
 
     dismiss: function () {
       this.cloudError = false;
-    },
-
-    edit: function (event, id) {
-      event.stopPropagation();
-      window.location = `/admin/guest/edit/${id}`;
-    },
-
-    details: function (event, id) {
-      event.stopPropagation();
-      window.location = `/admin/guest/${id}`;
     }
   }
 });

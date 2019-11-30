@@ -61,9 +61,7 @@
           </div>
           <p class="text-danger" v-if="cloudError"><small>An error occured while processing your request. Please check the information and try again.</small></p>
           <div class="form-group">
-            <button @click="cancel()" type="button" class="btn btn-dark btn-lg ajax-button">
-              <span class="button-text">Cancel</span>
-            </button>
+            <a href="/admin/guest" class="btn btn-dark btn-lg ajax-button">Cancel</a>
             <ajax-button type="submit" :syncing="syncing" class="btn-primary btn-lg">Edit</ajax-button>
           </div>
         </ajax-form>

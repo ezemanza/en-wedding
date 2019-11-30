@@ -25,8 +25,5 @@ parasails.registerPage('guest-details', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    back: function () {
-      window.location = '/admin/guest';
-    }
   }
 });

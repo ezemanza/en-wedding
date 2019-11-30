@@ -103,6 +103,34 @@ Cloud.setup({
       "args": [
         "id"
       ]
+    },
+    "createInvitation": {
+      "verb": "POST",
+      "url": "/api/v1/invitation/create",
+      "args": [
+        "mainGuest"
+      ]
+    },
+    "editInvitation": {
+      "verb": "PUT",
+      "url": "/api/v1/invitation/edit",
+      "args": [
+        "id",
+      ]
+    },
+    "resendInvitation": {
+      "verb": "POST",
+      "url": "/api/v1/invitation/resend-email",
+      "args": [
+        "id",
+      ]
+    },
+    "deleteInvitation": {
+      "verb": "DELETE",
+      "url": "/api/v1/invitation/delete",
+      "args": [
+        "id"
+      ]
     }
   }
 

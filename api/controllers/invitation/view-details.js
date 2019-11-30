@@ -2,10 +2,10 @@
 module.exports = {
 
 
-  friendlyName: 'View edit',
+  friendlyName: 'View details',
 
 
-  description: 'Display "Edit" page.',
+  description: 'Display "Details" page.',
 
   inputs: {
     id: {
@@ -18,7 +18,7 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/invitation/edit'
+      viewTemplatePath: 'pages/invitation/details'
     },
 
     notFound: {
