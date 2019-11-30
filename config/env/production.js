@@ -149,8 +149,8 @@ module.exports = {
     ***************************************************************************/
     cors: {
       allowOrigins: [
-        'http://www.ezeynaty.com',
-        'http://ezeynaty.com'
+        'https://www.ezeynaty.com',
+        'https://ezeynaty.com'
       ]
     },
 
@@ -372,7 +372,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://ezeynaty.com',
+    baseUrl: 'https://www.ezeynaty.com',
     mailgunDomain: 'mg.ezeynaty.com',
     mailgunSecret: process.env.MAILGUN_SECRET,
   },
