@@ -71,12 +71,6 @@ module.exports = {
     await Invitation.addToCollection(invitation.id, 'guests')
     .members(members);
 
-    console.log('============================');
-    console.log({ fullName: mainGuest.fullName,
-      uuid: invitation.uuid});
-    console.log('============================');
-
-
     await sails.helpers.sendTemplateEmail.with({
       to: mainGuest.emailAddress,
       subject: mainGuest.preferredLang === 'en' ? 'Ezequiel & Natalia Wedding invitation' : 'Invitación al casamiento de Ezequiel & Natalia',
