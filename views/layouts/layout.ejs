@@ -5,7 +5,7 @@
 } %><!DOCTYPE html>
 <html>
   <head>
-    <title>NEW_APP_NAME</title>
+    <title>Ezequiel & Natalia</title>
 
     <% /* Viewport tag for sensible mobile support */ %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -39,39 +39,45 @@
     <% /* Auto-injected «link» tags: */ %>
     <!--STYLES-->
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
-    <link rel="stylesheet" href="/dependencies/fontawesome.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/all.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/brands.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/fontawesome.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/regular.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/solid.css">
+    <link rel="stylesheet" href="/dependencies/fontawesome/v4-shims.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
   <body>
     <div id="page-wrap">
       <header id="page-header" class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
-        <a class="navbar-brand mr-0" href="/"><img class="logo" alt="NEW_APP_NAME logo" src="/images/logo.png"/></a>
+        <a class="navbar-brand mr-0" href="/admin">Ezequiel & Natalia</a>
         <div class="navbar-nav flex-row">
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
-          <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/contact">Help</a>
           <!-- Only in desktop nav -->
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-none d-sm-block" href="/admin/guest">Guests</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-none d-sm-block" href="/admin/invitation">Invitations</a>
           <div class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
-              <a class="dropdown-item" href="/account">Settings</a>
-              <a class="dropdown-item" href="/logout">Sign out</a>
+              <a class="dropdown-item" href="/admin/account">Settings</a>
+              <a class="dropdown-item" href="/admin/logout">Sign out</a>
             </div>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/account">Account Settings</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/logout">Sign out</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/guest">Guests</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/invitation">Invitations</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Sign out</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
-          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/faq">FAQ</a>
-          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/login">Log in</a>
+          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/admin/login">Log in</a>
           <!-- Only in desktop nav -->
           <div class="form-inline d-none ml-2 d-md-block" >
-            <a class="btn btn-outline-info" href="/signup">Sign up</a>
+            <a class="btn btn-outline-info" href="/admin/signup">Sign up</a>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/signup">Sign up</a>
+          <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/admin/signup">Sign up</a>
           <% } %>
         </div>
       </header>
@@ -93,16 +99,12 @@
 
       <%- body %>
 
-      <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse">
+      <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse d-none d-sm-flex">
         <div class="nav">
-          <small class="nav-item"><a class="nav-link text-info" href="/contact">Contact<span class="d-none d-sm-inline"> us</span></a></small>
-          <small class="nav-item"><a class="nav-link text-info" href="/legal/terms">Terms<span class="d-none d-sm-inline"> of use</span></a></small>
-          <small class="nav-item"><a class="nav-link text-info" href="/legal/privacy">Privacy<span class="d-none d-sm-inline"> policy</span></a></small>
           <% if(me) { %>
-          <small class="nav-item"><a class="nav-link text-info" href="/logout">Sign out</a></small>
+          <small class="nav-item"><a class="nav-link text-info" href="/admin/logout">Sign out</a></small>
           <% } %>
         </div>
-        <small class="copy">Copyright &copy; 2019 <a target="_blank" href="NEW_APP_COMPANY_ABOUT_HREF">NEW_APP_COMPANY_NAME</a>. <br class="xs-only"/>All rights reserved.</small>
       </footer>
     </div>
 
@@ -115,9 +117,6 @@
       by the asset pipeline between "SCRIPTS" and "SCRIPTS END", or both.
       (https://sailsjs.com/docs/concepts/assets/task-automation)
     */ %>
-
-    <% /* Load Stripe Checkout */ %>
-    <script src="https://checkout.stripe.com/checkout.js"></script>
 
     <% /* Delete the global `self` to help avoid client-side bugs.
     (see https://developer.mozilla.org/en-US/docs/Web/API/Window/self) */ %>
@@ -142,22 +141,26 @@
     <script src="/js/components/ajax-form.component.js"></script>
     <script src="/js/components/js-timestamp.component.js"></script>
     <script src="/js/components/modal.component.js"></script>
-    <script src="/js/utilities/open-stripe-checkout.js"></script>
     <script src="/js/pages/498.page.js"></script>
     <script src="/js/pages/account/account-overview.page.js"></script>
     <script src="/js/pages/account/edit-password.page.js"></script>
     <script src="/js/pages/account/edit-profile.page.js"></script>
-    <script src="/js/pages/contact.page.js"></script>
     <script src="/js/pages/dashboard/welcome.page.js"></script>
     <script src="/js/pages/entrance/confirmed-email.page.js"></script>
     <script src="/js/pages/entrance/forgot-password.page.js"></script>
     <script src="/js/pages/entrance/login.page.js"></script>
     <script src="/js/pages/entrance/new-password.page.js"></script>
     <script src="/js/pages/entrance/signup.page.js"></script>
-    <script src="/js/pages/faq.page.js"></script>
+    <script src="/js/pages/error.page.js"></script>
+    <script src="/js/pages/guest/create.page.js"></script>
+    <script src="/js/pages/guest/details.page.js"></script>
+    <script src="/js/pages/guest/edit.page.js"></script>
+    <script src="/js/pages/guest/list.page.js"></script>
     <script src="/js/pages/homepage.page.js"></script>
-    <script src="/js/pages/legal/privacy.page.js"></script>
-    <script src="/js/pages/legal/terms.page.js"></script>
+    <script src="/js/pages/invitation/create.page.js"></script>
+    <script src="/js/pages/invitation/details.page.js"></script>
+    <script src="/js/pages/invitation/edit.page.js"></script>
+    <script src="/js/pages/invitation/list.page.js"></script>
     <!--SCRIPTS END-->
 
     <% /* Display an overlay if the current browser is not supported.
@@ -220,8 +223,7 @@
             :
             '<strong>'+bowser.osname+'</strong> for versions lower than <strong>v'+ LATEST_SUPPORTED_VERSION_BY_OS[bowser.osname]+'</strong>. '+
             'To continue, please use a different device, or <a href="'+(bowser.osname === 'iOS' ? 'https://support.apple.com/en-us/HT204204' : 'https://support.google.com/android/?hl=en#topic=7313011')+'">upgrade this device\'s software</a> to the latest compatible version.'+
-            '  </p>'+
-            '  <a class="btn btn-primary" style="padding: 5px 10px" href="/contact">Need help?</a>'
+            '  </p>'
           )+
           '</div>';
           document.body.style.padding = '75px 0';

@@ -46,7 +46,7 @@ parasails.registerPage('signup', {
         // > (Note that we re-enable the syncing state here.  This is on purpose--
         // > to make sure the spinner stays there until the page navigation finishes.)
         this.syncing = true;
-        window.location = '/';
+        window.location = '/admin';
       }
     },
 
@@ -74,11 +74,6 @@ parasails.registerPage('signup', {
       // Validate password confirmation:
       if(argins.password && argins.password !== argins.confirmPassword) {
         this.formErrors.confirmPassword = true;
-      }
-
-      // Validate ToS agreement:
-      if(!argins.agreed) {
-        this.formErrors.agreed = true;
       }
 
       // If there were any issues, they've already now been communicated to the user,

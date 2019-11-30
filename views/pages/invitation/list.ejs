@@ -1,0 +1,58 @@
+<div id="invitation-list" v-cloak>
+
+  <div class="alert alert-danger fade show" role="alert" v-if="cloudError">
+    An error occured while processing your request.
+    <button type="button" class="close" @click="dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="container">
+    <h1>Manage Invitations</h1>
+    <hr/>
+    <a href="/admin/invitation/create" class="btn btn-primary mb-4">Create new Invitation</a>
+    <div class="alert alert-info" role="alert" v-if="<%= invitations.length === 0 %>">
+      There are no invitations to show. <a href="/admin/invitation/create" class="alert-link">Create new.</a>
+    </div>
+    <div v-else class="table-responsive">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Main Guest</th>
+            <th scope="col" class="text-center">Sent Invitation</th>
+            <th scope="col" class="text-center">Confirmed Invitation</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% _.each(invitations, function (invitation) { %>
+            <tr @click="(e) => details(e, <%= invitation.id %>)">
+              <th scope="row"><%= invitation.guests.find(g => g.type === 'main').fullName %></th>
+              <td class="text-center">
+                <% if (invitation.sent) { %>
+                  <i class="fas fa-check-circle text-success"></i>
+                <% } else { %>
+                  <i class="fas fa-times-circle text-danger"></i>
+                <% } %>
+              </td>
+              <td class="text-center">
+                <% if (invitation.confirmed) { %>
+                  <i class="fas fa-check-circle text-success"></i>
+                <% } else { %>
+                  <i class="fas fa-times-circle text-danger"></i>
+                <% } %>
+              </td>
+              <td class="text-center">
+                <a href="/admin/guest/<%= invitation.guests.find(g => g.type === 'main').id %>" class="btn btn-warning btn-sm mr-3">GUEST DETAILS</a>
+                <a href="/admin/invitation/edit/<%= invitation.id %>" class="btn btn-warning btn-sm mr-3">EDIT</a>
+                <button type="button" @click="(e) => resendInvitation(e, <%= invitation.id %>)" class="btn btn-primary btn-sm mr-3">RESEND EMAIL</button>
+                <button type="button" @click="(e) => deleteInvitation(e, <%= invitation.id %>)" class="btn btn-danger btn-sm">DELETE</button>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

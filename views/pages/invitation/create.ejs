@@ -1,0 +1,29 @@
+<div id="invitation-create" v-cloak>
+
+  <div class="container">
+    <h1 class="text-center">Create Invitation</h1>
+    <div class="create-invitation-form">
+      <hr/>
+      <div class="alert alert-danger" role="alert" v-if="<%= guests.length === 0 %>">
+        There are no guests to invite! <a href="/admin/guest/create" class="alert-link">Please create some guests first!</a>
+      </div>
+      <ajax-form v-else action="createInvitation" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+        <div class="form-group">
+          <label for="main-guest">Main Guest</label>
+          <select id="main-guest" :class="[formErrors.fullName ? 'is-invalid' : '', 'form-control']" v-model.trim="formData.mainGuest" focus-first>
+              <% _.each(guests, function (guest) { %>
+                <option value="<%= guest.id %>"><%= guest.fullName %></option>
+              <% }) %>
+          </select>
+          <div class="invalid-feedback" v-if="formErrors.mainGuest">Please select a guest.</div>
+        </div>
+        <p class="text-danger" v-if="cloudError"><small>An error occured while processing your request. Please check the information and try again.</small></p>
+        <div class="form-group">
+          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Create Invitation</ajax-button>
+        </div>
+      </ajax-form>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

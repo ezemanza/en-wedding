@@ -84,13 +84,6 @@ module.exports = Object.assign({}, PRODUCTION_CONFIG, {
     //--------------------------------------------------------------------------
 
     // mailgunSecret: 'key-sandbox_fake_bd32301385130a0bafe030c',
-    // stripeSecret: 'sk_sandbox__fake_Nfgh82401348jaDa3lkZ0d9Hm',
-    // stripePublishableKey: 'pk_sandbox__fake_fKd3mZJs1mlYrzWt7JQtkcRb',
-    //--------------------------------------------------------------------------
-    // /\  Hard-code credentials to use in staging for other 3rd party APIs, etc.
-    // ||  (or use system environment variables prefixed with "sails_custom__")
-    //--------------------------------------------------------------------------
-
   })
 
 });

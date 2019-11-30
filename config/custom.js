@@ -51,40 +51,25 @@ module.exports.custom = {
   * (https://app.mailgun.com/app/domains)                                   *
   *                                                                         *
   **************************************************************************/
-  // mailgunDomain: 'sandboxaa1234fake678.mailgun.org',
-  // mailgunSecret: 'key-fakeb183848139913858e8abd9a3',
+  mailgunDomain: 'sandbox315ffb296d6045ab85befdf0503c67c4.mailgun.org',
   //--------------------------------------------------------------------------
   // /\  Configure these to enable support for automated emails.
-  // ||  (Important for password recovery, verification, contact form, etc.)
+  // ||  (Important for password recovery, verification, etc.)
   //--------------------------------------------------------------------------
 
   // The sender that all outgoing emails will appear to come from.
-  fromEmailAddress: 'noreply@example.com',
-  fromName: 'The NEW_APP_NAME Team',
+  fromEmailAddress: 'ezeynaty.13@gmail.com',
+  fromName: 'Ezequiel & Natalia',
 
   // Email address for receiving support messages & other correspondences.
   // > If you're using the default privacy policy, this will be referenced
   // > as the contact email of your "data protection officer" for the purpose
   // > of compliance with regulations such as GDPR.
-  internalEmailAddress: 'support+development@example.com',
+  internalEmailAddress: 'ezeynaty.13@gmail.com',
 
   // Whether to require proof of email address ownership any time a new user
   // signs up, or when an existing user attempts to change their email address.
   verifyEmailAddresses: false,
-
-  /**************************************************************************
-  *                                                                         *
-  * Billing & payments configuration                                        *
-  *                                                                         *
-  * (https://dashboard.stripe.com/account/apikeys)                          *
-  *                                                                         *
-  **************************************************************************/
-  // stripePublishableKey: 'pk_test_Zzd814nldl91104qor5911gjald',
-  // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
-  //--------------------------------------------------------------------------
-  // /\  Configure these to enable support for billing features.
-  // ||  (Or if you don't need billing, feel free to remove them.)
-  //--------------------------------------------------------------------------
 
   /***************************************************************************
   *                                                                          *

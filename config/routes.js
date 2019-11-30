@@ -13,32 +13,38 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
-  'GET /':                   { action: 'view-homepage-or-redirect' },
-  'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
+  'GET /admin':                     { action: 'view-homepage-or-redirect' },
+  'GET /admin/welcome/:unused?':    { action: 'dashboard/view-welcome' },
 
-  'GET /faq':                { action:   'view-faq' },
-  'GET /legal/terms':        { action:   'legal/view-terms' },
-  'GET /legal/privacy':      { action:   'legal/view-privacy' },
-  'GET /contact':            { action:   'view-contact' },
+  'GET /admin/signup':              { action: 'entrance/view-signup' },
+  'GET /admin/email/confirm':       { action: 'entrance/confirm-email' },
+  'GET /admin/email/confirmed':     { action: 'entrance/view-confirmed-email' },
 
-  'GET /signup':             { action: 'entrance/view-signup' },
-  'GET /email/confirm':      { action: 'entrance/confirm-email' },
-  'GET /email/confirmed':    { action: 'entrance/view-confirmed-email' },
+  'GET /admin/login':               { action: 'entrance/view-login' },
+  'GET /admin/password/forgot':     { action: 'entrance/view-forgot-password' },
+  'GET /admin/password/new':        { action: 'entrance/view-new-password' },
 
-  'GET /login':              { action: 'entrance/view-login' },
-  'GET /password/forgot':    { action: 'entrance/view-forgot-password' },
-  'GET /password/new':       { action: 'entrance/view-new-password' },
+  'GET /admin/account':             { action: 'account/view-account-overview' },
+  'GET /admin/account/password':    { action: 'account/view-edit-password' },
+  'GET /admin/account/profile':     { action: 'account/view-edit-profile' },
 
-  'GET /account':            { action: 'account/view-account-overview' },
-  'GET /account/password':   { action: 'account/view-edit-password' },
-  'GET /account/profile':    { action: 'account/view-edit-profile' },
+  'GET /admin/guest/create':        { action: 'guest/view-create' },
+  'GET /admin/guest/edit/:id':      { action: 'guest/view-edit' },
+  'GET /admin/guest':               { action: 'guest/view-list' },
+  'GET /admin/guest/:id':           { action: 'guest/view-details' },
+
+  'GET /admin/invitation/create':   { action: 'invitation/view-create' },
+  'GET /admin/invitation/edit/:id': { action: 'invitation/view-edit' },
+  'GET /admin/invitation/:id':      { action: 'invitation/view-details' },
+  'GET /admin/invitation':          { action: 'invitation/view-list' },
+
+  'GET /error':                     { action: 'view-error' },
 
 
   //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
   //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
   //  ╩ ╩╩╚═╝╚═╝  ╩╚═╚═╝═╩╝╩╩╚═╚═╝╚═╝ ╩ ╚═╝  └┘   ═╩╝╚═╝╚╩╝╝╚╝╩═╝╚═╝╩ ╩═╩╝╚═╝
-  '/terms':                   '/legal/terms',
-  '/logout':                  '/api/v1/account/logout',
+  '/admin/logout':                  '/api/v1/account/logout',
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
@@ -52,14 +58,19 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
   // Note that, in this app, these API endpoints may be accessed using the `Cloud.*()` methods
   // from the Parasails library, or by using those method names as the `action` in <ajax-form>.
-  '/api/v1/account/logout':                           { action: 'account/logout' },
-  'PUT   /api/v1/account/update-password':            { action: 'account/update-password' },
-  'PUT   /api/v1/account/update-profile':             { action: 'account/update-profile' },
-  'PUT   /api/v1/account/update-billing-card':        { action: 'account/update-billing-card' },
-  'PUT   /api/v1/entrance/login':                        { action: 'entrance/login' },
-  'POST  /api/v1/entrance/signup':                       { action: 'entrance/signup' },
-  'POST  /api/v1/entrance/send-password-recovery-email': { action: 'entrance/send-password-recovery-email' },
-  'POST  /api/v1/entrance/update-password-and-login':    { action: 'entrance/update-password-and-login' },
-  'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
+  '/api/v1/account/logout':                               { action: 'account/logout' },
+  'PUT   /api/v1/account/update-password':                { action: 'account/update-password' },
+  'PUT   /api/v1/account/update-profile':                 { action: 'account/update-profile' },
+  'PUT   /api/v1/entrance/login':                         { action: 'entrance/login' },
+  'POST  /api/v1/entrance/signup':                        { action: 'entrance/signup' },
+  'POST  /api/v1/entrance/send-password-recovery-email':  { action: 'entrance/send-password-recovery-email' },
+  'POST  /api/v1/entrance/update-password-and-login':     { action: 'entrance/update-password-and-login' },
+  'POST  /api/v1/guest/create':                           { action: 'guest/create' },
+  'PUT  /api/v1/guest/edit':                              { action: 'guest/edit' },
+  'DELETE  /api/v1/guest/delete':                         { action: 'guest/delete' },
+  'POST  /api/v1/invitation/create':                      { action: 'invitation/create' },
+  'PUT  /api/v1/invitation/edit':                         { action: 'invitation/edit' },
+  'DELETE  /api/v1/invitation/delete':                    { action: 'invitation/delete' },
+  'POST /api/v1/invitation/resend-email':                 { action: 'invitation/resend-email' },
 
 };

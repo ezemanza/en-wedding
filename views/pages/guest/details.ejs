@@ -1,0 +1,48 @@
+<div id="guest-details" v-cloak>
+
+  <div class="container">
+    <h1 class="text-center">Guest Details</h1>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{ guest.fullName }}</dd>
+      
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">{{ guest.emailAddress || '-' }}</dd>
+      
+        <dt class="col-sm-3">Type</dt>
+        <dd class="col-sm-9">{{ guest.type.charAt(0).toUpperCase() + guest.type.slice(1) }}</dd>
+      
+        <dt class="col-sm-3">Language</dt>
+        <dd class="col-sm-9">{{ guest.preferredLang }}</dd>
+
+        <dt class="col-sm-3">Has Invitation</dt>
+        <dd class="col-sm-9">
+          <i v-if="guest.invitation" class="fas fa-check-circle text-success"></i>
+          <i v-else class="fas fa-times-circle text-danger"></i>
+        </dd>
+        <dt class="col-sm-3">Sent Invitation</dt>
+        <dd class="col-sm-9">
+          <i v-if="guest.invitation && guest.invitation.sent" class="fas fa-check-circle text-success"></i>
+          <i v-else class="fas fa-times-circle text-danger"></i>
+        </dd>
+        <dt class="col-sm-3">Confirmed Invitation</dt>
+        <dd class="col-sm-9">
+          <i v-if="guest.invitation && guest.invitation.confirmed" class="fas fa-check-circle text-success"></i>
+          <i v-else class="fas fa-times-circle text-danger"></i>
+        </dd>
+
+        <template v-if="guest.companions && guest.companions.length > 0">
+          <dt class="col-sm-3">Companions</dt>
+          <dd class="col-sm-9">
+            <dl class="row" v-for="(companion, index) in guest.companions">
+              <dd class="col-sm-4">{{ companion.fullName }}</dd>
+            </dl>
+          </dd>
+        </template>
+      </dl>
+      <a href="/admin/guest" class="btn btn-dark btn-lg ajax-button">Back</a>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
