@@ -45,6 +45,10 @@ parasails.registerPage('invitation-list', {
         .tolerate(()=>{
           this.cloudError = true;
         });
+
+      if (!this.cloudError) {
+        window.location = '/admin/invitation';
+      }
     },
 
     dismiss: function () {

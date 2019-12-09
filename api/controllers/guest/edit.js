@@ -1,4 +1,4 @@
-/* global Guest */
+/* global Guest, Invitation */
 module.exports = {
 
 
@@ -91,6 +91,13 @@ module.exports = {
     } else {
       await Guest.replaceCollection(updatedGuest.id, 'companions')
         .members(inputs.companions || []);
+
+      const guest = await Guest.findOne({ id: inputs.id }).populate('invitation');
+
+      if (guest.invitation) {
+        await Invitation.replaceCollection(guest.invitation.id, 'guests')
+          .members([...inputs.companions, inputs.id]);
+      }
     }
 
     // All done.

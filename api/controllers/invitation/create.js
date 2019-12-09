@@ -73,14 +73,20 @@ module.exports = {
 
     await sails.helpers.sendTemplateEmail.with({
       to: mainGuest.emailAddress,
-      subject: mainGuest.preferredLang === 'en' ? 'Ezequiel & Natalia Wedding invitation' : 'Invitación al casamiento de Ezequiel & Natalia',
+      subject: mainGuest.preferredLang === 'en' ? 'We are getting Married! | Ezequiel & Natalia' : 'Nos Casamos! | Ezequiel & Natalia',
       template: `email-invitation-${mainGuest.preferredLang}`,
       layout: false,
       templateData: {
         fullName: mainGuest.fullName,
-        uuid: invitation.uuid
+        uuid: invitation.uuid,
+        companions: mainGuest.companions.map(c => c.fullName)
       }
     });
+
+    await Invitation.updateOne({ id: invitation.id })
+      .set({
+        sent: true
+      });
 
     // All done.
     return;

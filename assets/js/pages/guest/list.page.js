@@ -40,6 +40,18 @@ parasails.registerPage('guest-list', {
       }
     },
 
+    createAndSendInvitation: async function (event, id) {
+      event.stopPropagation();
+      await Cloud['createInvitation'].with({ mainGuest: id })
+        .tolerate(()=>{
+          this.cloudError = true;
+        });
+
+      if (!this.cloudError) {
+        window.location = '/admin/guest';
+      }
+    },
+
     dismiss: function () {
       this.cloudError = false;
     }
