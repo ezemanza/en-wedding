@@ -1,3 +1,4 @@
 assets/dependencies/**/*.js
+assets/js/wedding/*
 views/**/*.ejs
 

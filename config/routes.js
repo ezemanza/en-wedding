@@ -13,6 +13,7 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
+  'GET /:uuid?':                    { action: 'view-wedding' },
   'GET /admin':                     { action: 'view-homepage-or-redirect' },
   'GET /admin/welcome/:unused?':    { action: 'dashboard/view-welcome' },
 
@@ -72,5 +73,6 @@ module.exports.routes = {
   'PUT  /api/v1/invitation/edit':                         { action: 'invitation/edit' },
   'DELETE  /api/v1/invitation/delete':                    { action: 'invitation/delete' },
   'POST /api/v1/invitation/resend-email':                 { action: 'invitation/resend-email' },
-
+  'GET /api/v1/invitation/get':                           { action: 'invitation/get' },
+  'POST /api/v1/invitation/confirm':                      { action: 'invitation/confirm' }
 };

@@ -52,6 +52,9 @@
                     </td>
                     <td class="text-center">
                         <a href="/admin/guest/edit/<%= guest.id %>" class="btn btn-warning btn-sm mr-3">EDIT</a>
+                        <% if (guest.type === 'main' && !guest.invitation) {%>
+                          <button type="button" @click="(e) => createAndSendInvitation(e, <%= guest.id %>)" class="btn btn-info btn-sm">CREATE & SEND INVITATION</button>
+                        <% } %>
                         <button type="button" @click="(e) => deleteGuest(e, <%= guest.id %>)" class="btn btn-danger btn-sm">DELETE</button>
                     </td>
                   </tr>
