@@ -2872,6 +2872,12 @@ h2#dont-miss-it-title{
 	font-family: 'Pacifico', cursive;
 }
 
+@media screen and (max-width: 560px) {
+	#dont-miss-it .image-divider {
+		background-position-x: 58%;
+	}
+}
+
 .circle-countdown{
 	width:100%; 
 	margin:0 auto; 
@@ -3762,4 +3768,11 @@ footer .image-divider.fixed-height{
 	letter-spacing:3px; 
 	margin-top:10px;
 }
+}
+
+/* Attending section */
+@media screen and (max-width: 560px) {
+	#attending .image-divider {
+		background-position-x: 30%;
+	}
 }
