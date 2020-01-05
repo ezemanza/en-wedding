@@ -1,4 +1,4 @@
-/* global Guest */
+/* global Guest, Invitation */
 module.exports = {
 
 
@@ -25,6 +25,10 @@ module.exports = {
     notFound: {
       description: 'No guest with the specified ID was found in the database.',
       responseType: 'notFound'
+    },
+    notFoundInvitation: {
+      description: 'The invitation of the deleted user could not be found',
+      responseType: 'notFound'
     }
   },
 
@@ -34,7 +38,18 @@ module.exports = {
     var deletedGuest = await Guest.destroyOne({ id });
 
     if (deletedGuest) {
-      return;
+
+      if (deletedGuest.invitation) {
+        var deletedInvitation = await Invitation.destroyOne({ id: deletedGuest.invitation });
+
+        if (deletedInvitation) {
+          return;
+        } else {
+          throw 'notFoundInvitation';
+        }
+      } else {
+        return;
+      }
     } else {
       throw 'notFound';
     }

@@ -131,7 +131,24 @@ Cloud.setup({
       "args": [
         "id"
       ]
+    },
+    "getInvitation": {
+      "verb": "GET",
+      "url": "/api/v1/invitation/get",
+      "args": [
+        "criteria"
+      ]
+    },
+    "confirmInvitation": {
+      "verb": "POST",
+      "url": "/api/v1/invitation/confirm",
+      "args": [
+        "guests",
+        "message",
+        "invitation"
+      ]
     }
   }
 
 });
+
