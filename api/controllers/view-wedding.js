@@ -30,6 +30,7 @@ module.exports = {
     return {
       layout: 'layouts/wedding',
       uuid,
+      google: process.env.GOOGLE
     };
 
   }
