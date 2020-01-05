@@ -1,4 +1,4 @@
-/* global Invitation, Guest */
+/* global Invitation*/
 module.exports = {
 
 
