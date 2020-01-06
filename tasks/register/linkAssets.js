@@ -10,6 +10,8 @@
 module.exports = function(grunt) {
   grunt.registerTask('linkAssets', [
     'sails-linker:devJs',
+    'sails-linker:devJsWedding',
     'sails-linker:devStyles',
+    'sails-linker:devStylesWedding',
   ]);
 };

@@ -16,6 +16,10 @@ module.exports = function(grunt) {
       src: ['.tmp/public/concat/production.js'],
       dest: '.tmp/public/min/production.min.js'
     },
+    distWedding: {
+      src: ['.tmp/public/concat/productionWedding.js'],
+      dest: '.tmp/public/min/productionWedding.min.js'
+    },
     options: {
       mangle: {
         reserved: [
