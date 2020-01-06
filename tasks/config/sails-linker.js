@@ -265,7 +265,7 @@ module.exports = function(grunt) {
       }
     },
 
-    prodStylesBuild: {
+    prodStylesWeddingBuild: {
       options: {
         startTag: '<!--STYLES_WEDDING-->',
         endTag: '<!--STYLES_WEDDING END-->',

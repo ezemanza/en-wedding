@@ -12,5 +12,6 @@ module.exports = function(grunt) {
     'sails-linker:prodJsBuild',
     'sails-linker:prodJsWeddingBuild',
     'sails-linker:prodStylesBuild',
+    'sails-linker:prodStylesWeddingBuild',
   ]);
 };
