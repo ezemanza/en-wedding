@@ -67,22 +67,22 @@ module.exports = function(grunt) {
       }
     },
 
-    // devJsWeddingBuild: {
-    //   options: {
-    //     startTag: '<!--SCRIPTS_WEDDING-->',
-    //     endTag: '<!--SCRIPTS_WEDDING END-->',
-    //     fileTmpl: '<script src="%s"></script>',
-    //     appRoot: '.tmp/public',
-    //     // relative: true
-    //     // ^^ Uncomment this if compiling assets for use in PhoneGap, CDN, etc.
-    //     //    (but be note that this can break custom font URLs)
-    //   },
-    //   files: {
-    //     '.tmp/public/**/*.html': require('../pipeline').jsWeddingFilesToInject,
-    //     'views/**/*.html': require('../pipeline').jsWeddingFilesToInject,
-    //     'views/**/*.ejs': require('../pipeline').jsWeddingFilesToInject
-    //   }
-    // },
+    devJsWeddingBuild: {
+      options: {
+        startTag: '<!--SCRIPTS_WEDDING-->',
+        endTag: '<!--SCRIPTS_WEDDING END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public',
+        // relative: true
+        // ^^ Uncomment this if compiling assets for use in PhoneGap, CDN, etc.
+        //    (but be note that this can break custom font URLs)
+      },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').jsWeddingFilesToInject,
+        'views/**/*.html': require('../pipeline').jsWeddingFilesToInject,
+        'views/**/*.ejs': require('../pipeline').jsWeddingFilesToInject
+      }
+    },
 
     prodJs: {
       options: {
@@ -116,6 +116,24 @@ module.exports = function(grunt) {
       options: {
         startTag: '<!--SCRIPTS-->',
         endTag: '<!--SCRIPTS END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public',
+        // relative: true
+        // ^^ Uncomment this if compiling assets for use in PhoneGap, CDN, etc.
+        //    (but be note that this can break custom font URLs)
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/dist/*.js'],
+        'views/**/*.html': ['.tmp/public/dist/*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/*.js']
+      }
+    },
+
+
+    prodJsWeddingBuild: {
+      options: {
+        startTag: '<!--SCRIPTS_WEDDING-->',
+        endTag: '<!--SCRIPTS_WEDDING END-->',
         fileTmpl: '<script src="%s"></script>',
         appRoot: '.tmp/public',
         // relative: true
@@ -184,23 +202,23 @@ module.exports = function(grunt) {
       }
     },
 
-    // devStylesBuildWedding: {
-    //   options: {
-    //     startTag: '<!--STYLES_WEDDING-->',
-    //     endTag: '<!--STYLES_WEDDING END-->',
-    //     fileTmpl: '<link rel="stylesheet" href="%s">',
-    //     appRoot: '.tmp/public',
-    //     // relative: true
-    //     // ^^ Uncomment this if compiling assets for use in PhoneGap, CDN, etc.
-    //     //    (but be note that this can break custom font URLs)
-    //   },
+    devStylesBuildWedding: {
+      options: {
+        startTag: '<!--STYLES_WEDDING-->',
+        endTag: '<!--STYLES_WEDDING END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public',
+        // relative: true
+        // ^^ Uncomment this if compiling assets for use in PhoneGap, CDN, etc.
+        //    (but be note that this can break custom font URLs)
+      },
 
-    //   files: {
-    //     '.tmp/public/**/*.html': require('../pipeline').cssWeddingFilesToInject,
-    //     'views/**/*.html': require('../pipeline').cssWeddingFilesToInject,
-    //     'views/**/*.ejs': require('../pipeline').cssWeddingFilesToInject
-    //   }
-    // },
+      files: {
+        '.tmp/public/**/*.html': require('../pipeline').cssWeddingFilesToInject,
+        'views/**/*.html': require('../pipeline').cssWeddingFilesToInject,
+        'views/**/*.ejs': require('../pipeline').cssWeddingFilesToInject
+      }
+    },
 
     prodStyles: {
       options: {
@@ -234,6 +252,23 @@ module.exports = function(grunt) {
       options: {
         startTag: '<!--STYLES-->',
         endTag: '<!--STYLES END-->',
+        fileTmpl: '<link rel="stylesheet" href="%s">',
+        appRoot: '.tmp/public',
+        // relative: true
+        // ^^ Uncomment this if compiling assets for use in PhoneGap, CDN, etc.
+        //    (but be note that this can break custom font URLs)
+      },
+      files: {
+        '.tmp/public/index.html': ['.tmp/public/dist/*.css'],
+        'views/**/*.html': ['.tmp/public/dist/*.css'],
+        'views/**/*.ejs': ['.tmp/public/dist/*.css']
+      }
+    },
+
+    prodStylesBuild: {
+      options: {
+        startTag: '<!--STYLES_WEDDING-->',
+        endTag: '<!--STYLES_WEDDING END-->',
         fileTmpl: '<link rel="stylesheet" href="%s">',
         appRoot: '.tmp/public',
         // relative: true
