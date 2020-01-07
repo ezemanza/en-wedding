@@ -154,7 +154,6 @@ var jsWeddingFilesToInject = [
   '/dependencies/wedding/pace/pace.min.js',
   '/dependencies/wedding/bootstrap/bootstrap.js',
   '/dependencies/wedding/modernizr/modernizr.js',
-  // '/dependencies/wedding/devicejs/device.js',
   '/dependencies/wedding/tinynav/tinynav.js',
   '/dependencies/wedding/smoothscroll/jquery.smooth-scroll.js',
   '/dependencies/wedding/flexslider/jquery.flexslider.js',
