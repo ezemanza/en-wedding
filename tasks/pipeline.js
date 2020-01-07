@@ -139,7 +139,6 @@ var jsWeddingFilesToInject = [
   '/dependencies/vue-router.js',
   '/dependencies/bootstrap-4/bootstrap-4.bundle.js',
   '/dependencies/cloud.js',
-  '/dependencies/moment.js',
   '/dependencies/parasails.js',
 
   // First amongst the app-level files, bring in cloud configuration
