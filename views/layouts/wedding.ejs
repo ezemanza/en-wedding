@@ -39,15 +39,14 @@
     <!--SCRIPTS_WEDDING-->
     <script src="/dependencies/sails.io.js"></script>
     <script src="/dependencies/lodash.js"></script>
-    <script src="/dependencies/jquery.min.js"></script>
     <script src="/dependencies/vue.js"></script>
     <script src="/dependencies/cloud.js"></script>
     <script src="/dependencies/parasails.js"></script>
+    <script src="/dependencies/moment.js"></script>
     <script src="/js/cloud.setup.js"></script>
     <script src="/js/components/ajax-button-template.component.js"></script>
     <script src="/js/components/ajax-form.component.js"></script>
     <script src="/js/pages/wedding.page.js"></script>
-    <script src="/js/wedding/moment/moment.js"></script>
     <script src="/js/wedding/moment/moment-timezone-with-data-10-year-range.js"></script>
     <script src="/js/wedding/jquery-1.11.1.min.js"></script>
     <script src="/js/wedding/pace/pace.min.js"></script>
@@ -73,5 +72,7 @@
     <script src="/js/wedding/map-script.js"></script>
     <script src="/js/wedding/main-slider-fade.js"></script>
     <!--SCRIPTS_WEDDING END-->
+    <!--OUTSIDE OF CONCATENATION CAUSE OF MOMENT TIMEZONE BUG-->
+    <script src="/moment/moment-timezone-with-data-10-year-range.js"></script>
   </body>
 </html>
