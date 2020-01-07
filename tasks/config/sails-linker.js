@@ -123,9 +123,9 @@ module.exports = function(grunt) {
         //    (but be note that this can break custom font URLs)
       },
       files: {
-        '.tmp/public/**/*.html': ['.tmp/public/dist/production.min.js'],
-        'views/**/*.html': ['.tmp/public/dist/production.min.js'],
-        'views/**/*.ejs': ['.tmp/public/dist/production.min.js']
+        '.tmp/public/**/*.html': ['.tmp/public/dist/production.min.*.js'],
+        'views/**/*.html': ['.tmp/public/dist/production.min.*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/production.min.*.js']
       }
     },
 
@@ -141,9 +141,9 @@ module.exports = function(grunt) {
         //    (but be note that this can break custom font URLs)
       },
       files: {
-        '.tmp/public/**/*.html': ['.tmp/public/dist/productionWedding.min.js'],
-        'views/**/*.html': ['.tmp/public/dist/productionWedding.min.js'],
-        'views/**/*.ejs': ['.tmp/public/dist/productionWedding.min.js']
+        '.tmp/public/**/*.html': ['.tmp/public/dist/productionWedding.min.*.js'],
+        'views/**/*.html': ['.tmp/public/dist/productionWedding.min.*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/productionWedding.min.*.js']
       }
     },
 
@@ -259,9 +259,9 @@ module.exports = function(grunt) {
         //    (but be note that this can break custom font URLs)
       },
       files: {
-        '.tmp/public/index.html': ['.tmp/public/dist/production.min.css'],
-        'views/**/*.html': ['.tmp/public/dist/production.min.css'],
-        'views/**/*.ejs': ['.tmp/public/dist/production.min.css']
+        '.tmp/public/index.html': ['.tmp/public/dist/production.min.*.css'],
+        'views/**/*.html': ['.tmp/public/dist/production.min.*.css'],
+        'views/**/*.ejs': ['.tmp/public/dist/production.min.*.css']
       }
     },
 
@@ -276,9 +276,9 @@ module.exports = function(grunt) {
         //    (but be note that this can break custom font URLs)
       },
       files: {
-        '.tmp/public/index.html': ['.tmp/public/dist/productionWedding.min.css'],
-        'views/**/*.html': ['.tmp/public/dist/productionWedding.min.css'],
-        'views/**/*.ejs': ['.tmp/public/dist/productionWedding.min.css']
+        '.tmp/public/index.html': ['.tmp/public/dist/productionWedding.min.*.css'],
+        'views/**/*.html': ['.tmp/public/dist/productionWedding.min.*.css'],
+        'views/**/*.ejs': ['.tmp/public/dist/productionWedding.min.*.css']
       }
     },
 
