@@ -43,7 +43,7 @@ var cssFilesToInject = [
 ];
 
 var cssWeddingFilesToInject = [
-  '/styles/wedding/bootstrap/bootstrap.min.css',
+  '/styles/wedding/bootstrap/bootstrap.css',
   '/styles/wedding/preloader.css',
   '/styles/wedding/preloader-default.css',
   '/styles/wedding/flexslider/flexslider.css',
@@ -52,7 +52,7 @@ var cssWeddingFilesToInject = [
   '/styles/wedding/magnific-popup/magnific-popup.css',
   '/styles/wedding/owlcarousel/owl.carousel.css',
   '/styles/wedding/owlcarousel/owl.theme.css',
-  '/styles/wedding/fonts/fontello/css/fontello.css',
+  '/styles/wedding/fontello.css',
   '/styles/wedding/style.css',
   '/styles/wedding/twemoji-amazing/twemoji-amazing.css',
   '/styles/wedding/skin/pattern/pattern-1.css',
