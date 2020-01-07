@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       }
     },
     js: {
-      src: '.tmp/public/min/*.js',
+      src: '.tmp/public/concat/*.js',
       dest: '.tmp/public/hash/'
     },
     css: {
