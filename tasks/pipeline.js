@@ -133,6 +133,7 @@ var jsWeddingFilesToInject = [
   // Bring in `.js` files for any other client-side JavaScript dependencies.
   // (e.g. Lodash, Vue.js, jQuery, Bootstrap, Ember, Angular, etc.)
   // > Be sure to list dependencies that depend on each other in the right order!
+  '/dependencies/wedding/jquery-1.11.1.min.js',
   '/dependencies/lodash.js',
   '/dependencies/vue.js',
   '/dependencies/cloud.js',
@@ -150,7 +151,6 @@ var jsWeddingFilesToInject = [
   // in no particular order.  To customize the ordering, add additional items
   // here, _above_ this one.
   '/js/pages/wedding.page.js',
-  '/dependencies/wedding/jquery-1.11.1.min.js',
   '/dependencies/wedding/pace/pace.min.js',
   '/dependencies/wedding/bootstrap/bootstrap.js',
   '/dependencies/wedding/modernizr/modernizr.js',
