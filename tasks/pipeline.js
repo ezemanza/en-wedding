@@ -150,7 +150,8 @@ var jsWeddingFilesToInject = [
   // in no particular order.  To customize the ordering, add additional items
   // here, _above_ this one.
   '/js/pages/wedding.page.js',
-  '/js/wedding/moment/moment-timezone-with-data-10-year-range.js',
+  // Moving outside of concatenation cause of moment js bug
+  // '/js/wedding/moment/moment-timezone-with-data-10-year-range.js',
   '/js/wedding/jquery-1.11.1.min.js',
   '/js/wedding/pace/pace.min.js',
   '/js/wedding/bootstrap/bootstrap.js',
