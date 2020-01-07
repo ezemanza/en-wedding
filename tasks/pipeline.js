@@ -162,7 +162,6 @@ var jsWeddingFilesToInject = [
   '/dependencies/wedding/jquery-ui-widget/jquery.ui.widget.js',
   '/dependencies/wedding/jquery-doubletaptogo/jquery.dcd.doubletaptogo.js',
   '/dependencies/wedding/vide/jquery.vide.js',
-  '/dependencies/wedding/stellar/jquery.stellar.js',
   '/dependencies/wedding/masonry/masonry.pkgd.min.js',
   '/dependencies/wedding/countdown/jquery.plugin.js',
   '/dependencies/wedding/countdown/jquery.countdown.js',
