@@ -150,6 +150,29 @@ var jsWeddingFilesToInject = [
   // in no particular order.  To customize the ordering, add additional items
   // here, _above_ this one.
   '/js/pages/wedding.page.js',
+  '/dependencies/wedding/jquery-1.11.1.min.js',
+  '/dependencies/wedding/pace/pace.min.js',
+  '/dependencies/wedding/bootstrap/bootstrap.js',
+  '/dependencies/wedding/modernizr/modernizr.js',
+  // '/dependencies/wedding/devicejs/device.js',
+  '/dependencies/wedding/tinynav/tinynav.js',
+  '/dependencies/wedding/smoothscroll/jquery.smooth-scroll.js',
+  '/dependencies/wedding/flexslider/jquery.flexslider.js',
+  '/dependencies/wedding/sticky/jquery.sticky.js',
+  '/dependencies/wedding/waypoint/jquery.waypoints.min.js',
+  '/dependencies/wedding/jquery-ui-widget/jquery.ui.widget.js',
+  '/dependencies/wedding/jquery-doubletaptogo/jquery.dcd.doubletaptogo.js',
+  '/dependencies/wedding/vide/jquery.vide.js',
+  '/dependencies/wedding/stellar/jquery.stellar.js',
+  '/dependencies/wedding/masonry/masonry.pkgd.min.js',
+  '/dependencies/wedding/countdown/jquery.plugin.js',
+  '/dependencies/wedding/countdown/jquery.countdown.js',
+  '/dependencies/wedding/magnific-popup/jquery.magnific-popup.js',
+  '/dependencies/wedding/owlcarousel/owl.carousel.js',
+  '/dependencies/wedding/markerlabel/markerwithlabel.js',
+  '/dependencies/wedding/script.js',
+  '/dependencies/wedding/map-script.js',
+  '/dependencies/wedding/main-slider-fade.js'
 ];
 
 //   ██████╗██╗     ██╗███████╗███╗   ██╗████████╗   ███████╗██╗██████╗ ███████╗
