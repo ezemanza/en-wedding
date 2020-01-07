@@ -123,9 +123,9 @@ module.exports = function(grunt) {
         //    (but be note that this can break custom font URLs)
       },
       files: {
-        '.tmp/public/**/*.html': ['.tmp/public/dist/production.*.js'],
-        'views/**/*.html': ['.tmp/public/dist/production.*.js'],
-        'views/**/*.ejs': ['.tmp/public/dist/production.*.js']
+        '.tmp/public/**/*.html': ['.tmp/public/dist/production.min.*.js'],
+        'views/**/*.html': ['.tmp/public/dist/production.min.*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/production.min.*.js']
       }
     },
 
@@ -141,9 +141,9 @@ module.exports = function(grunt) {
         //    (but be note that this can break custom font URLs)
       },
       files: {
-        '.tmp/public/**/*.html': ['.tmp/public/dist/productionWedding.*.js'],
-        'views/**/*.html': ['.tmp/public/dist/productionWedding.*.js'],
-        'views/**/*.ejs': ['.tmp/public/dist/productionWedding.*.js']
+        '.tmp/public/**/*.html': ['.tmp/public/dist/productionWedding.min.*.js'],
+        'views/**/*.html': ['.tmp/public/dist/productionWedding.min.*.js'],
+        'views/**/*.ejs': ['.tmp/public/dist/productionWedding.min.*.js']
       }
     },
 

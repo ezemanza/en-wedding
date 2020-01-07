@@ -150,31 +150,6 @@ var jsWeddingFilesToInject = [
   // in no particular order.  To customize the ordering, add additional items
   // here, _above_ this one.
   '/js/pages/wedding.page.js',
-  // Moving outside of concatenation cause of moment js bug
-  // '/js/wedding/moment/moment-timezone-with-data-10-year-range.js',
-  '/js/wedding/jquery-1.11.1.min.js',
-  '/js/wedding/pace/pace.min.js',
-  '/js/wedding/bootstrap/bootstrap.js',
-  '/js/wedding/modernizr/modernizr.js',
-  '/js/wedding/devicejs/device.js',
-  '/js/wedding/tinynav/tinynav.js',
-  '/js/wedding/smoothscroll/jquery.smooth-scroll.js',
-  '/js/wedding/flexslider/jquery.flexslider.js',
-  '/js/wedding/sticky/jquery.sticky.js',
-  '/js/wedding/waypoint/jquery.waypoints.min.js',
-  '/js/wedding/jquery-ui-widget/jquery.ui.widget.js',
-  '/js/wedding/jquery-doubletaptogo/jquery.dcd.doubletaptogo.js',
-  '/js/wedding/vide/jquery.vide.js',
-  '/js/wedding/stellar/jquery.stellar.js',
-  '/js/wedding/masonry/masonry.pkgd.min.js',
-  '/js/wedding/countdown/jquery.plugin.js',
-  '/js/wedding/countdown/jquery.countdown.js',
-  '/js/wedding/magnific-popup/jquery.magnific-popup.js',
-  '/js/wedding/owlcarousel/owl.carousel.js',
-  '/js/wedding/markerlabel/markerwithlabel.js',
-  '/js/wedding/script.js',
-  '/js/wedding/map-script.js',
-  '/js/wedding/main-slider-fade.js'
 ];
 
 //   ██████╗██╗     ██╗███████╗███╗   ██╗████████╗   ███████╗██╗██████╗ ███████╗
