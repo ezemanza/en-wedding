@@ -3776,3 +3776,41 @@ footer .image-divider.fixed-height{
 		background-position-x: 30%;
 	}
 }
+
+
+#photo-divider-1 .image-divider {
+	background-image: url(/images/89.jpg);
+	height:500px;
+	background-position: center 70%;
+}
+
+@media screen and (min-width: 1900px) {
+	#photo-divider-1 .image-divider {
+		height: 900px;
+	}
+}
+
+#dont-miss-it .image-divider {
+	background-image: url(/images/70.jpg);
+	height: 700px;
+	padding: 226px 0;
+}
+
+@media screen and (min-width: 1600px) {
+	#dont-miss-it .image-divider {
+		height: 1100px;
+    background-position: center 36%;
+	}
+}
+
+#photo-divider-2 .image-divider {
+	background-image: url(/images/32.jpg);
+	height:500px;
+	background-position: center 20%;
+}
+
+@media screen and (min-width: 1700px) {
+	#photo-divider-2 .image-divider {
+		height: 900px;
+	}
+}
