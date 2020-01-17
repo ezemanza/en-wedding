@@ -20,10 +20,10 @@ exports.config = {
      * issues with the agent, 'info' and higher will impose the least overhead on
      * production applications.
      */
-    level: 'warn',
-    rules: {
-      ignore: ['^/socket.io/*/xhr-polling']
-    }
+    level: 'warn'
+  },
+  rules: {
+    ignore: ['^/socket.io/.*/xhr-polling']
   },
   /**
    * When true, all request headers except for those listed in attributes.exclude
