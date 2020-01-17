@@ -71,7 +71,7 @@ parasails.registerPage('guest-create', {
       }
 
       // Validate email:
-      if(argins.type === 'Main' && (!argins.emailAddress || !parasails.util.isValidEmailAddress(argins.emailAddress))) {
+      if(argins.type === 'main' && (!argins.emailAddress || !parasails.util.isValidEmailAddress(argins.emailAddress))) {
         this.formErrors.emailAddress = true;
       }
 

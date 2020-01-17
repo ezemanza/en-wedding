@@ -3,7 +3,7 @@ parasails.registerPage('welcome', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    pageLoadedAt: Date.now()
+    guests: []
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -14,7 +14,11 @@ parasails.registerPage('welcome', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    //…
+    if (SAILS_LOCALS.guests) {
+      this.guests = SAILS_LOCALS.guests;
+    } else {
+      window.location = '/admin/error';
+    }
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗

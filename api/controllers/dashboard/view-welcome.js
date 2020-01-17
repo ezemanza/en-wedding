@@ -1,3 +1,5 @@
+/* global Invitation, Guest */
+
 module.exports = {
 
 
@@ -18,10 +20,12 @@ module.exports = {
 
 
   fn: async function () {
+    const invitations = await Invitation.find().populate('confirmedGuests');
 
-    return {};
-
+    return {
+      guests: invitations.reduce((acc, invitation) => {
+        return acc.concat(invitation.confirmedGuests);
+      }, [])
+    };
   }
-
-
 };

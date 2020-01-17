@@ -2,7 +2,8 @@
   <div class="container">
     <h1>Welcome!</h1>
     <hr/>
-    <p>TODO: show how many invitations are confirmed and how many are not</p>
+    <h4>Confirmed Guests TODO</h3>
+    <p v-for="guest in guests"> {{ guest.fullName }}</p>
   </div>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
