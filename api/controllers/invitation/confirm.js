@@ -55,13 +55,18 @@ module.exports = {
       throw 'error';
     }
 
+    const update = {
+      confirmedl: true
+    };
+
+    if (inputs.message && inputs.message.length > 0) {
+      update.comment = inputs.message;
+    }
+
     const updatedInvitation = await Invitation.updateOne({
       uuid: inputs.invitation
     })
-    .set({
-      confirmed: true,
-      comment: inputs.message
-    });
+    .set(update);
 
     if (!updatedInvitation) {
       throw 'notFound';
