@@ -1046,7 +1046,7 @@
         </div>
 
         <!-- CONFIRMATION FORM -->
-        <div v-else-if="!invitation.confirmed" class="row">
+        <div v-else-if="!confirmationForm.confirmed" class="row">
 
           <ajax-form action="confirmInvitation" :syncing.sync="syncing" :cloud-error.sync="cloudError"
             @submitted="invitationConfirmed" :handle-parsing="handleParsingConfirmForm">
@@ -1056,7 +1056,7 @@
                 <label for="inputemail"><%= __('SELECT THE GUESTS COMING') %></label>
                 <div class="ajax-input ajax-checkbox">
                   <div class="checkbox" v-for="guest in invitation.data.guests">
-                    <label class="btn btn-primary no-icon" data-toggle="buttons" @click="handleGuests(guest.id)">
+                    <label :class="['btn btn-primary custom-option-icon', {'active-icon active': confirmFormData.guests.includes(guest.id)}]" data-toggle="buttons" @click="handleGuests(guest.id)">
                       <input type="checkbox" :value="guest.id">
                       {{ guest.fullName }}
                     </label>

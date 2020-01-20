@@ -16,6 +16,10 @@ parasails.registerPage('wedding', {
       guests: [],
       message: ''
     },
+
+    confirmationForm: {
+      confirmed: false,
+    },
     // For tracking client-side validation errors in our form.
     // > Has property set to `true` for each invalid property in `formData`.
     formErrors: { /* … */ },
@@ -117,8 +121,9 @@ parasails.registerPage('wedding', {
 
       return argins;
     },
+
     invitationConfirmed: function () {
-      this.invitation.confirmed = true;
+      this.confirmationForm.confirmed = true;
     }
   }
 });
