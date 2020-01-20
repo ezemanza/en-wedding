@@ -3,7 +3,10 @@ parasails.registerPage('welcome', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    guests: []
+    notComing: [],
+    confirmed: [],
+    pending: [],
+    total: []
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -14,8 +17,11 @@ parasails.registerPage('welcome', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    if (SAILS_LOCALS.guests) {
-      this.guests = SAILS_LOCALS.guests;
+    if (SAILS_LOCALS.notComing && SAILS_LOCALS.confirmed && SAILS_LOCALS.pending && SAILS_LOCALS.total) {
+      this.notComing = SAILS_LOCALS.notComing;
+      this.confirmed = SAILS_LOCALS.confirmed;
+      this.pending = SAILS_LOCALS.pending;
+      this.total = SAILS_LOCALS.total;
     } else {
       window.location = '/admin/error';
     }
