@@ -28,7 +28,7 @@ module.exports = {
       description: 'If true invitation is confrmed'
     },
     comment: {
-      required: true,
+      required: false,
       type: 'string',
       example: 'A comment',
       description: 'Confirmation comment from the main guest'
