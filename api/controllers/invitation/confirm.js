@@ -56,7 +56,7 @@ module.exports = {
     }
 
     const update = {
-      confirmedl: true
+      confirmed: true
     };
 
     if (inputs.message && inputs.message.length > 0) {
