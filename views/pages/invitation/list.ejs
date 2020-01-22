@@ -10,10 +10,13 @@
     <h1>Manage Invitations</h1>
     <hr/>
     <a href="/admin/invitation/create" class="btn btn-primary mb-4">Create new Invitation</a>
-    <div class="alert alert-info" role="alert" v-if="<%= invitations.length === 0 %>">
+    <div class="alert alert-info" role="alert" v-if="invitations.length === 0">
       There are no invitations to show. <a href="/admin/invitation/create" class="alert-link">Create new.</a>
     </div>
-    <div v-else class="table-responsive">
+    <div v-else>
+      <div class="form-group">
+        <input type="email" class="form-control" id="search" v-model="search" placeholder="Search invitation..">
+      </div>
       <table class="table table-hover">
         <thead class="thead-dark">
           <tr>
@@ -24,31 +27,21 @@
           </tr>
         </thead>
         <tbody>
-          <% _.each(invitations, function (invitation) { %>
-            <tr @click="(e) => details(e, <%= invitation.id %>)">
-              <th scope="row"><%= invitation.guests.find(g => g.type === 'main').fullName %></th>
-              <td class="text-center">
-                <% if (invitation.sent) { %>
-                  <i class="fas fa-check-circle text-success"></i>
-                <% } else { %>
-                  <i class="fas fa-times-circle text-danger"></i>
-                <% } %>
-              </td>
-              <td class="text-center">
-                <% if (invitation.confirmed) { %>
-                  <i class="fas fa-check-circle text-success"></i>
-                <% } else { %>
-                  <i class="fas fa-times-circle text-danger"></i>
-                <% } %>
-              </td>
-              <td class="text-center">
-                <a href="/admin/guest/<%= invitation.guests.find(g => g.type === 'main').id %>" class="btn btn-warning btn-sm mr-3">GUEST DETAILS</a>
-                <a href="/admin/invitation/edit/<%= invitation.id %>" class="btn btn-warning btn-sm mr-3">EDIT</a>
-                <button type="button" @click="(e) => resendInvitation(e, <%= invitation.id %>)" class="btn btn-primary btn-sm mr-3">RESEND EMAIL</button>
-                <button type="button" @click="(e) => deleteInvitation(e, <%= invitation.id %>)" class="btn btn-danger btn-sm">DELETE</button>
-              </td>
-            </tr>
-          <% }) %>
+          <tr v-for="invitation in filteredInvitations" @click="(e) => details(e, invitation.id)">
+            <th scope="row">{{ invitation.guests.find(g => g.type === 'main').fullName }}</th>
+            <td class="text-center">
+              <i :class="['fa', { 'fa-check-circle text-success': invitation.sent, 'fa-times-circle text-danger': !invitation.sent }]"></i>
+            </td>
+            <td class="text-center">
+              <i :class="['fa', { 'fa-check-circle text-success': invitation.confirmed, 'fa-times-circle text-danger': !invitation.confirmed }]"></i>
+            </td>
+            <td class="text-center">
+              <a :href="`/admin/guest/${invitation.guests.find(g => g.type === 'main').id}`" class="btn btn-warning btn-sm mr-3">GUEST DETAILS</a>
+              <a :href="`/admin/invitation/edit/${invitation.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
+              <button type="button" @click="(e) => resendInvitation(e, invitation.id)" class="btn btn-primary btn-sm mr-3">RESEND EMAIL</button>
+              <button type="button" @click="(e) => deleteInvitation(e, invitation.id)" class="btn btn-danger btn-sm">DELETE</button>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
