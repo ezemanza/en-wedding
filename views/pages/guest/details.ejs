@@ -2,20 +2,24 @@
 
   <div class="container">
     <h1 class="text-center">Guest Details</h1>
-    <hr/>
-    <dl class="row">
+    <div class="guest-details__container">
+      <hr/>
+      <dl class="row">
         <dt class="col-sm-3">Name</dt>
         <dd class="col-sm-9">{{ guest.fullName }}</dd>
       
         <dt class="col-sm-3">Email</dt>
         <dd class="col-sm-9">{{ guest.emailAddress || '-' }}</dd>
-      
+  
         <dt class="col-sm-3">Type</dt>
         <dd class="col-sm-9">{{ guest.type.charAt(0).toUpperCase() + guest.type.slice(1) }}</dd>
-      
+  
         <dt class="col-sm-3">Language</dt>
         <dd class="col-sm-9">{{ guest.preferredLang }}</dd>
-
+  
+        <dt class="col-sm-3">Table</dt>
+        <dd class="col-sm-9">{{ guest.table }}</dd>
+  
         <dt class="col-sm-3">Has Invitation</dt>
         <dd class="col-sm-9">
           <i v-if="guest.invitation" class="fas fa-check-circle text-success"></i>
@@ -31,7 +35,7 @@
           <i v-if="guest.invitation && guest.invitation.confirmed" class="fas fa-check-circle text-success"></i>
           <i v-else class="fas fa-times-circle text-danger"></i>
         </dd>
-
+  
         <template v-if="guest.companions && guest.companions.length > 0">
           <dt class="col-sm-3">Companions</dt>
           <dd class="col-sm-9">
@@ -41,7 +45,12 @@
           </dd>
         </template>
       </dl>
-      <a href="/admin/guest" class="btn btn-dark btn-lg ajax-button">Back</a>
+  
+      <div class="text-right">
+        <a href="/admin/guest" class="btn btn-dark">Back</a>
+        <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
   </div>
 
 </div>

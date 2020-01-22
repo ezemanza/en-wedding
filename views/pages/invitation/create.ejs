@@ -18,8 +18,9 @@
           <div class="invalid-feedback" v-if="formErrors.mainGuest">Please select a guest.</div>
         </div>
         <p class="text-danger" v-if="cloudError"><small>An error occured while processing your request. Please check the information and try again.</small></p>
-        <div class="form-group">
-          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Create Invitation</ajax-button>
+        <div class="form-groupm text-right">
+          <a href="/admin/invitation" class="btn btn-dark">Back</a>
+          <ajax-button type="submit" :syncing="syncing" class="btn-primary">Create Invitation</ajax-button>
         </div>
       </ajax-form>
     </div>

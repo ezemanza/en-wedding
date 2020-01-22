@@ -59,8 +59,9 @@
             <textarea class="form-control" id="comment" rows="3" v-model="formData.comment" disabled></textarea>
           </div>
         <p class="text-danger" v-if="cloudError"><small>An error occured while processing your request. Please check the information and try again.</small></p>
-        <div class="form-group">
-          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Edit Invitation</ajax-button>
+        <div class="form-group text-right">
+          <a href="/admin/invitation/" class="btn btn-dark">Back</a>
+          <ajax-button type="submit" :syncing="syncing" class="btn-primary">Edit</ajax-button>
         </div>
       </ajax-form>
     </div>

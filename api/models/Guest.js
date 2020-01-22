@@ -39,6 +39,11 @@ module.exports = {
       isIn: ['en', 'es-AR']
     },
 
+    table: {
+      type: 'number',
+      required: false
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

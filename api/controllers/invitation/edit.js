@@ -81,26 +81,18 @@ module.exports = {
       id: inputs.id
     })
     .set({
-      uuid: inputs.uuid,
       confirmed: inputs.confirmed,
-      comment: inputs.comment,
       sent: inputs.sent
     });
 
     if (!updatedInvitation) {
       throw 'notFound';
     } else {
-      await Invitation.replaceCollection(updatedInvitation.id, 'guests')
-        .members(inputs.guests || []);
-
       await Invitation.replaceCollection(updatedInvitation.id, 'confirmedGuests')
         .members(inputs.confirmedGuests || []);
     }
 
     // All done.
     return;
-
   }
-
-
 };

@@ -122,7 +122,8 @@ var jsFilesToInject = [
   '/js/pages/invitation/create.page.js',
   '/js/pages/invitation/details.page.js',
   '/js/pages/invitation/edit.page.js',
-  '/js/pages/invitation/list.page.js'
+  '/js/pages/invitation/list.page.js',
+  '/js/pages/tables.page.js'
 ];
 
 var jsWeddingFilesToInject = [

@@ -7,7 +7,8 @@ parasails.registerPage('guest-create', {
     formData: {
       type: 'main',
       preferredLang: 'es-AR',
-      companions: []
+      companions: [],
+      table: 0,
     },
 
     backup: {

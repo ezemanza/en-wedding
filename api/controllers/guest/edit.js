@@ -50,6 +50,13 @@ module.exports = {
       type: 'string',
       example: 'en',
       description: 'Guest language for the invitation and webpage'
+    },
+
+    table: {
+      required: false,
+      type: 'number',
+      example: 1,
+      description: 'Guest table in the venue'
     }
   },
 
@@ -83,14 +90,15 @@ module.exports = {
       emailAddress: inputs.emailAddress ? inputs.emailAddress.toLowerCase() : '',
       fullName: inputs.fullName,
       type: inputs.type,
-      preferredLang: inputs.preferredLang
+      preferredLang: inputs.preferredLang,
+      table: inputs.table
     });
 
     if (!updatedGuest) {
       throw 'notFound';
-    } else {
+    } else if (updatedGuest.type === 'main') {
       await Guest.replaceCollection(updatedGuest.id, 'companions')
-        .members(inputs.companions || []);
+        .members(inputs.companions);
 
       const guest = await Guest.findOne({ id: inputs.id }).populate('invitation');
 

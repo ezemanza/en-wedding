@@ -62,8 +62,10 @@
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
           <!-- Only in desktop nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-none d-sm-block" href="/admin/guest">Guests</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-none d-sm-block" href="/admin/invitation">Invitations</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/">Dashboard</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/guest">Guests</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/invitation">Invitations</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/tables">Tables</a>
           <div class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
@@ -74,6 +76,7 @@
           <!-- Only in mobile nav -->
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/guest">Guests</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/invitation">Invitations</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/tables">Tables</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Sign out</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
@@ -169,6 +172,7 @@
     <script src="/js/pages/invitation/details.page.js"></script>
     <script src="/js/pages/invitation/edit.page.js"></script>
     <script src="/js/pages/invitation/list.page.js"></script>
+    <script src="/js/pages/tables.page.js"></script>
     <!--SCRIPTS END-->
     <% /* Display an overlay if the current browser is not supported.
     (Relies on `bowser`, which is loaded inline above.) */ %>

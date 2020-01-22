@@ -2,50 +2,56 @@
 
   <div class="container">
     <h1 class="text-center">Invitation Details</h1>
-    <hr/>
-    <dl class="row">
-      <dt class="col-sm-3">Main Guest</dt>
-      <dd class="col-sm-9">{{ invitation.guests.find(g => g.type === 'main').fullName }}</dd>
-        
-      <template v-if="invitation.guests.length > 1">
-        <dt class="col-sm-3">Companions</dt>
-        <dd class="col-sm-9">
-            <dl class="row" v-for="(guest, index) in invitation.guests" v-if="guest.type === 'companion'">
-              <dd class="col-sm-4">{{ guest.fullName }}</dd>
-            </dl>
-        </dd>
-      </template>
-
-      <dt class="col-sm-3">UUID</dt>
-      <dd class="col-sm-9">{{ invitation.uuid }}</dd>
-
-      <dt class="col-sm-3">Email Sent</dt>
-      <dd class="col-sm-9">
-          <i v-if="invitation.sent" class="fas fa-check-circle text-success"></i>
-          <i v-else class="fas fa-times-circle text-danger"></i>
-      </dd>
-
-      <dt class="col-sm-3">Confirmed</dt>
-      <dd class="col-sm-9">
-          <i v-if="invitation.confirmed" class="fas fa-check-circle text-success"></i>
-          <i v-else class="fas fa-times-circle text-danger"></i>
-      </dd>
+    <div class="invitation-details__container">
+      <hr/>
+      <dl class="row">
+        <dt class="col-sm-3">Main Guest</dt>
+        <dd class="col-sm-9">{{ invitation.guests.find(g => g.type === 'main').fullName }}</dd>
   
-      <dt class="col-sm-3">Comment</dt>
-      <dd class="col-sm-9">
-        {{ invitation.comment || '-' }}
-      </dd>
-
-      <template v-if="invitation.confirmedGuests && invitation.confirmedGuests.length > 0">
-        <dt class="col-sm-3">Confirmed Guests</dt>
+        <template v-if="invitation.guests.length > 1">
+          <dt class="col-sm-3">Companions</dt>
+          <dd class="col-sm-9">
+              <dl class="row" v-for="(guest, index) in invitation.guests" v-if="guest.type === 'companion'">
+                <dd class="col-sm-4">{{ guest.fullName }}</dd>
+              </dl>
+          </dd>
+        </template>
+  
+        <dt class="col-sm-3">UUID</dt>
+        <dd class="col-sm-9">{{ invitation.uuid }}</dd>
+  
+        <dt class="col-sm-3">Email Sent</dt>
         <dd class="col-sm-9">
-            <dl class="row" v-for="(guest, index) in invitation.confirmedGuests">
-              <dd class="col-sm-4">{{ guest.fullName }}</dd>
-            </dl>
+            <i v-if="invitation.sent" class="fas fa-check-circle text-success"></i>
+            <i v-else class="fas fa-times-circle text-danger"></i>
         </dd>
-      </template>
+  
+        <dt class="col-sm-3">Confirmed</dt>
+        <dd class="col-sm-9">
+            <i v-if="invitation.confirmed" class="fas fa-check-circle text-success"></i>
+            <i v-else class="fas fa-times-circle text-danger"></i>
+        </dd>
+    
+        <dt class="col-sm-3">Comment</dt>
+        <dd class="col-sm-9">
+          {{ invitation.comment || '-' }}
+        </dd>
+  
+        <template v-if="invitation.confirmedGuests && invitation.confirmedGuests.length > 0">
+          <dt class="col-sm-3">Confirmed Guests</dt>
+          <dd class="col-sm-9">
+              <dl class="row" v-for="(guest, index) in invitation.confirmedGuests">
+                <dd class="col-sm-4">{{ guest.fullName }}</dd>
+              </dl>
+          </dd>
+        </template>
       </dl>
-      <a href="/admin/invitation" class="btn btn-dark btn-lg ajax-button">Back</a>
+
+      <div class="text-right">
+        <a href="/admin/invitation" class="btn btn-dark">Back</a>
+        <a :href="`/admin/invitation/edit/${invitation.id}`" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
   </div>
 
 </div>

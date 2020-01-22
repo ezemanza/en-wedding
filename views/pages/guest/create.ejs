@@ -16,21 +16,26 @@
           <div class="invalid-feedback" v-if="formErrors.emailAddress">Please enter a valid email address.</div>
         </div>
         <div class="form-group">
-            <label :class="[formErrors.preferredLang ? 'is-invalid' : '']">Guest Preferred Language</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="preferredLangEnglish" id="preferredLangEnglish" value="en" v-model.trim="formData.preferredLang">
-              <label class="form-check-label" for="preferredLangEnglish">
-                English
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="preferredLangSpanish" id="preferredLangSpanish" value="es-AR" v-model.trim="formData.preferredLang">
-              <label class="form-check-label" for="preferredLangSpanish">
-                Spanish
-              </label>
-            </div>
-            <div class="invalid-feedback" v-if="formErrors.password">Please select a language.</div>
+          <label :class="[formErrors.preferredLang ? 'is-invalid' : '']">Guest Preferred Language</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="preferredLangEnglish" id="preferredLangEnglish" value="en" v-model.trim="formData.preferredLang">
+            <label class="form-check-label" for="preferredLangEnglish">
+              English
+            </label>
           </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="preferredLangSpanish" id="preferredLangSpanish" value="es-AR" v-model.trim="formData.preferredLang">
+            <label class="form-check-label" for="preferredLangSpanish">
+              Spanish
+            </label>
+          </div>
+          <div class="invalid-feedback" v-if="formErrors.password">Please select a language.</div>
+        </div>
+        <div class="form-group">
+          <label for="table">Table</label>
+          <input class="form-control" id="table" type="number"  :class="[formErrors.table ? 'is-invalid' : '']" v-model.trim="formData.table">
+          <div class="invalid-feedback" v-if="formErrors.table">Please enter a valid table.</div>
+        </div>
         <div class="form-group">
           <label :class="[formErrors.type ? 'is-invalid' : '']">Type</label>
           <div class="form-check">
@@ -59,8 +64,9 @@
             <% }) %>
         </div>
         <p class="text-danger" v-if="cloudError"><small>An error occured while processing your request. Please check the information and try again.</small></p>
-        <div class="form-group">
-          <ajax-button type="submit" :syncing="syncing" class="btn-dark btn-lg btn-block">Create guest</ajax-button>
+        <div class="form-group text-right">
+          <a href="/admin/guest" class="btn btn-dark">Back</a>
+          <ajax-button type="submit" :syncing="syncing" class="btn-primary">Create guest</ajax-button>
         </div>
       </ajax-form>
     </div>

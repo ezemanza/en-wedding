@@ -10,7 +10,8 @@ parasails.registerPage('guest-edit', {
       emailAddress: '',
       type: '',
       companions: [],
-      preferredLang: ''
+      preferredLang: '',
+      table: null
     },
     backup: {
       companions: []
@@ -41,7 +42,8 @@ parasails.registerPage('guest-edit', {
         emailAddress,
         type,
         companions,
-        preferredLang
+        preferredLang,
+        table
       } = SAILS_LOCALS.guest;
 
       this.formData.id = id;
@@ -50,6 +52,7 @@ parasails.registerPage('guest-edit', {
       this.formData.type = type;
       this.formData.companions = companions || [];
       this.formData.preferredLang = preferredLang;
+      this.formData.table = table;
       this.backup.companions = companions || [];
     } else {
       window.location = '/admin/error';

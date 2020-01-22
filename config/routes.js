@@ -39,6 +39,8 @@ module.exports.routes = {
   'GET /admin/invitation/:id':      { action: 'invitation/view-details' },
   'GET /admin/invitation':          { action: 'invitation/view-list' },
 
+  'GET /admin/tables':              { action: 'view-tables' },
+
   'GET /error':                     { action: 'view-error' },
 
 
