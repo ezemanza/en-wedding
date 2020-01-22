@@ -3,7 +3,9 @@ parasails.registerPage('invitation-list', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    cloudError: false
+    cloudError: false,
+    search: '',
+    invitations: []
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -14,7 +16,18 @@ parasails.registerPage('invitation-list', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    //…
+    if (SAILS_LOCALS.invitations) {
+      this.invitations = SAILS_LOCALS.invitations;
+    }
+  },
+
+  computed: {
+    filteredInvitations({ search, invitations }) {
+      return invitations.filter(invitation => {
+        const invitationMain = invitation.guests.find(g => g.type === 'main');
+        return invitationMain.fullName.toLowerCase().includes(search.toLowerCase());
+      });
+    }
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
