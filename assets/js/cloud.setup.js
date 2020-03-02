@@ -83,7 +83,8 @@ Cloud.setup({
         "fullName",
         "companions",
         "preferredLang",
-        "table"
+        "table",
+        "minor"
       ]
     },
     "editGuest": {
@@ -96,7 +97,8 @@ Cloud.setup({
         "fullName",
         "companions",
         "preferredLang",
-        "table"
+        "table",
+        "minor"
       ]
     },
     "deleteGuest": {

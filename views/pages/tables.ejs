@@ -1,9 +1,9 @@
 <div id="tables-view" v-cloak>
 
   <div class="container">
-    <h1>Tables</h1>
-    <hr/>
-    <ul class="nav nav-tabs">
+    <h1 class="no-print">Tables</h1>
+    <hr class="no-print"/>
+    <ul class="nav nav-tabs no-print">
       <li class="nav-item">
         <a class="nav-link active" id="assigned-tab" data-toggle="tab" href="#assigned" role="tab" aria-controls="assigned" aria-selected="true">Assigned</a>
       </li>
@@ -12,19 +12,19 @@
       </li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane fade show active" id="assigned" role="tabpanel" aria-labelledby="assigned-tab">
+      <div class="tab-pane fade show active no-print" id="assigned" role="tabpanel" aria-labelledby="assigned-tab">
         <div class="card-body">
           <div class="container-fluid">
-            <div class="row">
+            <div class="row no-print">
               <p class="text-danger mr-4">Not coming</p>
               <p class="text-warning mr-4">Pending confirmation</p>
               <p>Confirmed</p>
             </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-4 mb-4" v-for="(table, key) in assigned">
-                <div class="card">
+            <div class="row print">
+              <div class="col-xs-12 col-sm-4 mb-4 print-column" v-for="(table, key) in assigned">
+                <div class="card" style="page-break-inside: avoid;">
                   <div class="card-body">
-                    <h5 class="card-title">Table {{key}}</h5>
+                    <h5 class="card-title">Mesa {{key}}</h5>
                     <p :class="['card-text', { 'text-danger': guest.status === 'notComing', 'text-warning': guest.status === 'pending' }]" v-for="guest in table">{{guest.fullName}}</p>
                   </div>
                 </div>
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="tab-pane fade" id="unassigned" role="tabpanel" aria-labelledby="unassigned-tab">
+      <div class="tab-pane fade no-print" id="unassigned" role="tabpanel" aria-labelledby="unassigned-tab">
         <div class="card-body">
           <div class="container-fluid">
             <div class="row">

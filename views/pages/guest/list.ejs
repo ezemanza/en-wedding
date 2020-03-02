@@ -16,38 +16,40 @@
           <div class="form-group">
             <input type="email" class="form-control" id="search" v-model="search" placeholder="Search guest..">
           </div>
-          <table class="table table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col" class="text-center">Has Invitation</th>
-                <th scope="col" class="text-center">Sent Invitation</th>
-                <th scope="col" class="text-center">Confirmed Invitation</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="guest in filteredGuests" @click="(e) => details(e, guest.id)">
-                <th scope="row">{{ guest.fullName }}</th>
-                <td>{{ guest.type }}</td>
-                <td class="text-center">
-                  <i :class="['fa', { 'fa-check-circle text-success': guest.invitation, 'fa-times-circle text-danger': !guest.invitation }]"></i>
-                </td>
-                <td class="text-center">
-                  <i :class="['fa', { 'fa-check-circle text-success': guest.invitation && guest.invitation.sent, 'fas fa-times-circle text-danger': !guest.invitation || !guest.invitation.sent }]"></i>
-                </td>
-                <td class="text-center">
-                  <i :class="['fa', { 'fa-check-circle text-success': guest.invitation && guest.invitation.confirmed, 'fas fa-times-circle text-danger': !guest.invitation || !guest.invitation.confirmed }]"></i>
-                </td>
-                <td class="text-center">
-                  <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
-                  <button v-if="guest.type === 'main' && !guest.invitation" type="button" @click="(e) => createAndSendInvitation(e, guest.id)" class="btn btn-info btn-sm">CREATE & SEND INVITATION</button>
-                  <button type="button" @click="(e) => deleteGuest(e, guest.id)" class="btn btn-danger btn-sm">DELETE</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Type</th>
+                  <th scope="col" class="text-center">Has Invitation</th>
+                  <th scope="col" class="text-center">Sent Invitation</th>
+                  <th scope="col" class="text-center">Confirmed Invitation</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="guest in filteredGuests" @click="(e) => details(e, guest.id)">
+                  <th scope="row">{{ guest.fullName }}</th>
+                  <td>{{ guest.type }}</td>
+                  <td class="text-center">
+                    <i :class="['fa', { 'fa-check-circle text-success': guest.invitation, 'fa-times-circle text-danger': !guest.invitation }]"></i>
+                  </td>
+                  <td class="text-center">
+                    <i :class="['fa', { 'fa-check-circle text-success': guest.invitation && guest.invitation.sent, 'fas fa-times-circle text-danger': !guest.invitation || !guest.invitation.sent }]"></i>
+                  </td>
+                  <td class="text-center">
+                    <i :class="['fa', { 'fa-check-circle text-success': guest.invitation && guest.invitation.confirmed, 'fas fa-times-circle text-danger': !guest.invitation || !guest.invitation.confirmed }]"></i>
+                  </td>
+                  <td class="text-center">
+                    <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
+                    <button v-if="guest.type === 'main' && !guest.invitation" type="button" @click="(e) => createAndSendInvitation(e, guest.id)" class="btn btn-info btn-sm">CREATE & SEND INVITATION</button>
+                    <button type="button" @click="(e) => deleteGuest(e, guest.id)" class="btn btn-danger btn-sm">DELETE</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
       </div>
   </div>
 </div>

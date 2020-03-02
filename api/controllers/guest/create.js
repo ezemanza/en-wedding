@@ -50,6 +50,13 @@ module.exports = {
       type: 'number',
       example: 1,
       description: 'Guest table in the venue'
+    },
+
+    minor: {
+      required: false,
+      type: 'boolean',
+      example: true,
+      description: 'Guest age below 5'
     }
   },
 
@@ -72,7 +79,8 @@ module.exports = {
       fullName: inputs.fullName,
       type: inputs.type,
       preferredLang: inputs.preferredLang,
-      table: inputs.table
+      table: inputs.table,
+      minor: inputs.minor
     })
     .intercept(() => { throw 'error'; })
     .fetch();

@@ -9,42 +9,86 @@
   <div class="container">
     <h1>Manage Invitations</h1>
     <hr/>
-    <a href="/admin/invitation/create" class="btn btn-primary mb-4">Create Invitation</a>
-    <div class="alert alert-info" role="alert" v-if="invitations.length === 0">
-      There are no invitations to show. <a href="/admin/invitation/create" class="alert-link">Create new.</a>
-    </div>
-    <div v-else>
-      <div class="form-group">
-        <input type="email" class="form-control" id="search" v-model="search" placeholder="Search invitation..">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+        <div class="card-body">
+          <a href="/admin/invitation/create" class="btn btn-primary mb-4">Create new Invitation</a>
+          <div class="alert alert-info" role="alert" v-if="invitations.length === 0">
+            There are no invitations to show. <a href="/admin/invitation/create" class="alert-link">Create new.</a>
+          </div>
+          <div v-else>
+            <div class="form-group">
+              <input type="email" class="form-control" id="search" v-model="search" placeholder="Search invitation..">
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Main Guest</th>
+                    <th scope="col" class="text-center">Sent Invitation</th>
+                    <th scope="col" class="text-center">Confirmed Invitation</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="invitation in filteredInvitations" @click="(e) => details(e, invitation.id)">
+                    <th scope="row">{{ invitation.guests.find(g => g.type === 'main').fullName }}</th>
+                    <td class="text-center">
+                      <i :class="['fa', { 'fa-check-circle text-success': invitation.sent, 'fa-times-circle text-danger': !invitation.sent }]"></i>
+                    </td>
+                    <td class="text-center">
+                      <i :class="['fa', { 'fa-check-circle text-success': invitation.confirmed, 'fa-times-circle text-danger': !invitation.confirmed }]"></i>
+                    </td>
+                    <td class="text-center">
+                      <a :href="`/admin/guest/${invitation.guests.find(g => g.type === 'main').id}`" class="btn btn-warning btn-sm mr-3">GUEST DETAILS</a>
+                      <a :href="`/admin/invitation/edit/${invitation.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
+                      <button type="button" @click="(e) => resendInvitation(e, invitation.id)" class="btn btn-primary btn-sm mr-3">RESEND EMAIL</button>
+                      <button type="button" @click="(e) => deleteInvitation(e, invitation.id)" class="btn btn-danger btn-sm">DELETE</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-      <table class="table table-hover">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">Main Guest</th>
-            <th scope="col" class="text-center">Sent Invitation</th>
-            <th scope="col" class="text-center">Confirmed Invitation</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="invitation in filteredInvitations" @click="(e) => details(e, invitation.id)">
-            <th scope="row">{{ invitation.guests.find(g => g.type === 'main').fullName }}</th>
-            <td class="text-center">
-              <i :class="['fa', { 'fa-check-circle text-success': invitation.sent, 'fa-times-circle text-danger': !invitation.sent }]"></i>
-            </td>
-            <td class="text-center">
-              <i :class="['fa', { 'fa-check-circle text-success': invitation.confirmed, 'fa-times-circle text-danger': !invitation.confirmed }]"></i>
-            </td>
-            <td class="text-center">
-              <a :href="`/admin/guest/${invitation.guests.find(g => g.type === 'main').id}`" class="btn btn-warning btn-sm mr-3">GUEST DETAILS</a>
-              <a :href="`/admin/invitation/edit/${invitation.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
-              <button type="button" @click="(e) => resendInvitation(e, invitation.id)" class="btn btn-primary btn-sm mr-3">RESEND EMAIL</button>
-              <button type="button" @click="(e) => deleteInvitation(e, invitation.id)" class="btn btn-danger btn-sm">DELETE</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+      <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Who</th>
+                  <th scope="col">Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="invitation in filteredInvitations">
+                  <td>
+                    <ul style="list-style: none;">
+                      <template v-for="guest in invitation.guests.map(g => g.fullName)">
+                        <li style="white-space: nowrap;">{{ guest }}</li>
+                      </template>
+                    </ul>
+                  </td>
+                  <td>{{ invitation.comment || '-' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 
 </div>
