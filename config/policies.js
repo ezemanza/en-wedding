@@ -21,6 +21,7 @@ module.exports.policies = {
   'view-wedding': {
     '*': true
   },
+  'view-instagram': true,
   'invitation/get': true,
   'invitation/confirm': true
 };

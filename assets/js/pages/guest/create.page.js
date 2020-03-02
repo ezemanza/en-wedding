@@ -9,6 +9,7 @@ parasails.registerPage('guest-create', {
       preferredLang: 'es-AR',
       companions: [],
       table: 0,
+      minor: false
     },
 
     backup: {

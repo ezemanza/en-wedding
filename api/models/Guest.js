@@ -44,6 +44,12 @@ module.exports = {
       required: false
     },
 
+    minor: {
+      type: 'boolean',
+      description: 'Mark guest age below 5 years',
+      required: false
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

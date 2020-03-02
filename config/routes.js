@@ -14,6 +14,7 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /:uuid?':                    { action: 'view-wedding' },
+  'GET /instagram':                 { action: 'view-instagram' },
   'GET /admin':                     { action: 'view-homepage-or-redirect' },
   'GET /admin/welcome/:unused?':    { action: 'dashboard/view-welcome' },
 

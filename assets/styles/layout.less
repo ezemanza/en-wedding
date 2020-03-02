@@ -82,3 +82,21 @@ body.detected-mobile {
     }
   }
 }
+
+@media print {
+  .print {
+    display: block;
+
+    .print-column {
+      display: inline-block;
+    }
+  }
+
+  .no-print {
+    display: none;
+  }
+
+  .no-print--important{
+    display: none!important;
+  }
+}

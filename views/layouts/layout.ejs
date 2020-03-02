@@ -56,7 +56,7 @@
   </head>
   <body>
     <div id="page-wrap">
-      <header id="page-header" class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
+      <header id="page-header" class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between no-print--important">
         <a class="navbar-brand mr-0" href="/admin">Ezequiel & Natalia</a>
         <div class="navbar-nav flex-row">
           <!-- LOGGED-IN NAVIGATION -->
@@ -95,13 +95,13 @@
 
       <!-- Alert if email has not been confirmed -->
       <% if(me&&me.emailChangeCandidate) { %>
-      <div class="container-fluid">
+      <div class="container-fluid no-print--important">
         <div class="alert alert-secondary mt-2" role="alert">
         Your updated email address needs verification. Until you click the link sent to <strong><%= me.emailChangeCandidate %></strong>, you'll still need to sign in as <strong><%= me.emailAddress %></strong>.
         </div>
       </div>
       <% } else if(me&&me.emailStatus === 'unconfirmed') { %>
-      <div class="container-fluid">
+      <div class="container-fluid no-print--important">
         <div class="alert alert-secondary mt-2" role="alert">
         Your email address still needs verification. Your account access may be limited until you click the link sent to <strong><%= me.emailChangeCandidate ? me.emailChangeCandidate : me.emailAddress%></strong>.
         </div>
@@ -110,7 +110,7 @@
 
       <%- body %>
 
-      <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse d-none d-sm-flex">
+      <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse d-none d-sm-flex no-print--important">
         <div class="nav">
           <% if(me) { %>
           <small class="nav-item"><a class="nav-link text-info" href="/admin/logout">Sign out</a></small>
