@@ -5,11 +5,14 @@ parasails.registerPage('guest-create', {
   data: {
     // Form data
     formData: {
+      firstName: '',
+      lastName: '',
       type: 'main',
       preferredLang: 'es-AR',
       companions: [],
       table: 0,
-      minor: false
+      minor: false,
+      menu: ''
     },
 
     backup: {
@@ -67,9 +70,14 @@ parasails.registerPage('guest-create', {
 
       var argins = this.formData;
 
-      // Validate full name:
-      if(!argins.fullName) {
-        this.formErrors.fullName = true;
+      // Validate first name:
+      if(!argins.firstName) {
+        this.formErrors.firstName = true;
+      }
+
+      // Validate last name:
+      if(!argins.lastName) {
+        this.formErrors.lastName = true;
       }
 
       // Validate email:

@@ -19,23 +19,26 @@ module.exports = {
 
   fn: async function () {
     const guests = await Guest.find().populate('companions').populate('invitation');
-    // Order users by groups (main with companions followed)
-    let orderedGuests= [];
 
-    guests.forEach((guest) => {
-      if (guest.type === 'main') {
-        orderedGuests.push(guest);
-        if (guest.companions.length > 0) {
-          guest.companions.forEach((companion) => {
-            orderedGuests.push(guests.find(g => g.id === companion.id));
-          });
-        }
+    const alphabetical = (a, b, prop = 'lastName') => {
+      if (a[prop] < b[prop]) {
+        return -1;
       }
-    });
+
+      if (a[prop] > b[prop]) {
+        return 1;
+      }
+
+      if (prop === 'firstName') {
+        return 0;
+      }
+
+      return alphabetical(a, b, 'firstName');
+    };
 
     // Respond with view.
     return {
-      guests: orderedGuests
+      guests: guests.sort(alphabetical)
     };
 
   }

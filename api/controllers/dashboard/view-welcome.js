@@ -22,6 +22,22 @@ module.exports = {
   fn: async function () {
     const invitations = await Invitation.find().populate('confirmedGuests').populate('guests');
 
+    const alphabetical = (a, b, prop = 'lastName') => {
+      if (a[prop] < b[prop]) {
+        return -1;
+      }
+
+      if (a[prop] > b[prop]) {
+        return 1;
+      }
+
+      if (prop === 'firstName') {
+        return 0;
+      }
+
+      return alphabetical(a, b, 'firstName');
+    };
+
     const confirmed = invitations.reduce((acc, invitation) => {
       if (invitation.confirmed) {
         return acc.concat(invitation.confirmedGuests);
@@ -55,10 +71,10 @@ module.exports = {
     });
 
     return {
-      confirmed,
-      pending,
-      total,
-      notComing
+      confirmed: confirmed.sort(alphabetical),
+      pending: pending.sort(alphabetical),
+      total: total.sort(alphabetical),
+      notComing: notComing.sort(alphabetical)
     };
   }
 };
