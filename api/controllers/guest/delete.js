@@ -39,7 +39,7 @@ module.exports = {
 
     if (deletedGuest) {
 
-      if (deletedGuest.invitation) {
+      if (deletedGuest.invitation && deletedGuest.type === 'main') {
         var deletedInvitation = await Invitation.destroyOne({ id: deletedGuest.invitation });
 
         if (deletedInvitation) {

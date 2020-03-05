@@ -1,14 +1,14 @@
 <div id="tables-view" v-cloak>
 
   <div class="container">
-    <h1 class="no-print">Tables</h1>
+    <h1 class="no-print">Mesas</h1>
     <hr class="no-print"/>
     <ul class="nav nav-tabs no-print">
       <li class="nav-item">
-        <a class="nav-link active" id="assigned-tab" data-toggle="tab" href="#assigned" role="tab" aria-controls="assigned" aria-selected="true">Assigned</a>
+        <a class="nav-link active" id="assigned-tab" data-toggle="tab" href="#assigned" role="tab" aria-controls="assigned" aria-selected="true">Asignadas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="unassigned-tab" data-toggle="tab" href="#unassigned" role="tab" aria-controls="unassigned" aria-selected="false">Unassigned</a>
+        <a class="nav-link" id="unassigned-tab" data-toggle="tab" href="#unassigned" role="tab" aria-controls="unassigned" aria-selected="false">Sin asignar</a>
       </li>
     </ul>
     <div class="tab-content">
@@ -16,9 +16,9 @@
         <div class="card-body">
           <div class="container-fluid">
             <div class="row no-print">
-              <p class="text-danger mr-4">Not coming</p>
-              <p class="text-warning mr-4">Pending confirmation</p>
-              <p>Confirmed</p>
+              <p class="text-danger mr-4">No viene</p>
+              <p class="text-warning mr-4">Confirmación Pendiente</p>
+              <p>Confirmado</p>
             </div>
             <div class="row print">
               <div class="col-xs-12 col-sm-4 mb-4 print-column" v-for="(table, key) in assigned">
@@ -38,16 +38,16 @@
         <div class="card-body">
           <div class="container-fluid">
             <div class="row">
-              <p class="text-danger mr-4">Not coming</p>
-              <p class="text-warning mr-4">Pending confirmation</p>
-              <p>Confirmed</p>
+              <p class="text-danger mr-4">No viene</p>
+              <p class="text-warning mr-4">Confirmación Pendiente</p>
+              <p>Confirmado</p>
             </div>
             <div class="row">
               <table class="table">
                 <thead>
                   <tr>
                     <th class="col-small" scope="col">#</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Nombre y apellido</th>
                     <th></th>
                   </tr>
                 </thead>

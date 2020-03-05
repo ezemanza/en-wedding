@@ -31,11 +31,18 @@ module.exports = {
       description: 'The guest type, main or companion'
     },
 
-    fullName:  {
+    firstName:  {
       required: true,
       type: 'string',
-      example: 'Frida Kahlo de Rivera',
-      description: 'The guest\'s full name.',
+      example: 'Frida',
+      description: 'The guest\'s first name.',
+    },
+
+    lastName:  {
+      required: true,
+      type: 'string',
+      example: 'Kahlo de Rivera',
+      description: 'The guest\'s last name.',
     },
 
     companions: {
@@ -54,8 +61,8 @@ module.exports = {
 
     table: {
       required: false,
-      type: 'number',
-      example: 1,
+      type: 'string',
+      example: '1',
       description: 'Guest table in the venue'
     },
 
@@ -64,7 +71,14 @@ module.exports = {
       type: 'boolean',
       example: true,
       description: 'Guest age below 5'
-    }
+    },
+
+    menu: {
+      required: false,
+      type: 'string',
+      example: 'Adulto',
+      description: 'Guest menu'
+    },
   },
 
 
@@ -95,11 +109,14 @@ module.exports = {
     })
     .set({
       emailAddress: inputs.emailAddress ? inputs.emailAddress.toLowerCase() : '',
-      fullName: inputs.fullName,
+      firstName: inputs.firstName,
+      lastName: inputs.lastName,
+      fullName: `${inputs.firstName} ${inputs.lastName}`,
       type: inputs.type,
       preferredLang: inputs.preferredLang,
       table: inputs.table,
-      minor: inputs.minor
+      minor: inputs.minor,
+      menu: inputs.menu
     });
 
     if (!updatedGuest) {

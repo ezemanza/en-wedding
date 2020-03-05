@@ -62,32 +62,32 @@
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
           <!-- Only in desktop nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/">Dashboard</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/guest">Guests</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/invitation">Invitations</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/tables">Tables</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/">Inicio</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/guest">Invitados</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/invitation">Invitaciones</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/tables">Mesas</a>
           <div class="nav-item dropdown d-none d-sm-block">
-            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
+            <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
-              <a class="dropdown-item" href="/admin/account">Settings</a>
-              <a class="dropdown-item" href="/admin/logout">Sign out</a>
+              <a class="dropdown-item" href="/admin/account">Opciones</a>
+              <a class="dropdown-item" href="/admin/logout">Salir</a>
             </div>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/guest">Guests</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/invitation">Invitations</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/tables">Tables</a>
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Sign out</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/guest">Invitados</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/invitation">Invitaciones</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/tables">Mesas</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Salir</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
-          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/admin/login">Log in</a>
+          <a class="nav-item nav-link ml-2 ml-md-0 mr-2" href="/admin/login">Iniciar Sesión</a>
             <% if (_environment !== 'production') { %>
               <!-- Only in desktop nav -->
               <div class="form-inline d-none ml-2 d-md-block" >
-                <a class="btn btn-outline-info" href="/admin/signup">Sign up</a>
+                <a class="btn btn-outline-info" href="/admin/signup">Registrarse</a>
               </div>
               <!-- Only in mobile nav -->
-              <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/admin/signup">Sign up</a>
+              <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/admin/signup">Registrarse</a>
             <% } %>
           <% } %>
         </div>
@@ -97,13 +97,13 @@
       <% if(me&&me.emailChangeCandidate) { %>
       <div class="container-fluid no-print--important">
         <div class="alert alert-secondary mt-2" role="alert">
-        Your updated email address needs verification. Until you click the link sent to <strong><%= me.emailChangeCandidate %></strong>, you'll still need to sign in as <strong><%= me.emailAddress %></strong>.
+          Su dirección de correo electrónico actualizada necesita verificación. Hasta que haga clic en el enlace enviado a <strong><%= me.emailChangeCandidate %></strong>, deberá iniciar sesión como <strong><%= me.emailAddress %></strong>.
         </div>
       </div>
       <% } else if(me&&me.emailStatus === 'unconfirmed') { %>
       <div class="container-fluid no-print--important">
         <div class="alert alert-secondary mt-2" role="alert">
-        Your email address still needs verification. Your account access may be limited until you click the link sent to <strong><%= me.emailChangeCandidate ? me.emailChangeCandidate : me.emailAddress%></strong>.
+          Su dirección de correo electrónico aún necesita verificación. El acceso a su cuenta puede estar limitado hasta que haga clic en el enlace enviado a <strong><%= me.emailChangeCandidate ? me.emailChangeCandidate : me.emailAddress%></strong>.
         </div>
       </div>
       <% } %>
@@ -113,7 +113,7 @@
       <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse d-none d-sm-flex no-print--important">
         <div class="nav">
           <% if(me) { %>
-          <small class="nav-item"><a class="nav-link text-info" href="/admin/logout">Sign out</a></small>
+          <small class="nav-item"><a class="nav-link text-info" href="/admin/logout">Salir</a></small>
           <% } %>
         </div>
       </footer>

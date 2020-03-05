@@ -6,13 +6,16 @@ parasails.registerPage('guest-edit', {
   data: {
     formData: {
       id: null,
+      firstName: '',
+      lastName: '',
       fullName: '',
       emailAddress: '',
       type: '',
       companions: [],
       preferredLang: '',
       table: null,
-      minor: null
+      minor: null,
+      menu: ''
     },
     backup: {
       companions: []
@@ -39,16 +42,21 @@ parasails.registerPage('guest-edit', {
     if (SAILS_LOCALS.guest) {
       const {
         id,
+        firstName,
+        lastName,
         fullName,
         emailAddress,
         type,
         companions,
         preferredLang,
         table,
-        minor
+        minor,
+        menu
       } = SAILS_LOCALS.guest;
 
       this.formData.id = id;
+      this.formData.firstName = firstName;
+      this.formData.lastName = lastName;
       this.formData.fullName = fullName;
       this.formData.emailAddress = emailAddress;
       this.formData.type = type;
@@ -56,6 +64,7 @@ parasails.registerPage('guest-edit', {
       this.formData.preferredLang = preferredLang;
       this.formData.table = table;
       this.formData.minor = minor;
+      this.formData.menu = menu;
       this.backup.companions = companions || [];
     } else {
       window.location = '/admin/error';
@@ -92,9 +101,14 @@ parasails.registerPage('guest-edit', {
 
       var argins = this.formData;
 
-      // Validate full name:
-      if(!argins.fullName) {
-        this.formErrors.fullName = true;
+      // Validate first name:
+      if(!argins.firstName) {
+        this.formErrors.firstName = true;
+      }
+
+      // Validate last name:
+      if(!argins.lastName) {
+        this.formErrors.lastName = true;
       }
 
       // Validate email:

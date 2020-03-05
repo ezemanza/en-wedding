@@ -80,11 +80,13 @@ Cloud.setup({
       "args": [
         "emailAddress",
         "type",
-        "fullName",
+        "firstName",
+        "lastName",
         "companions",
         "preferredLang",
         "table",
-        "minor"
+        "minor",
+        "menu"
       ]
     },
     "editGuest": {
@@ -94,11 +96,13 @@ Cloud.setup({
         "id",
         "emailAddress",
         "type",
-        "fullName",
+        "firstName",
+        "lastName",
         "companions",
         "preferredLang",
         "table",
-        "minor"
+        "minor",
+        "menu"
       ]
     },
     "deleteGuest": {

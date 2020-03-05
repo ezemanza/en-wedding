@@ -12,9 +12,20 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    firstName: {
+      type: 'string',
+      description: 'Representation of the guest\'s first name.',
+      maxLength: 120,
+    },
+
+    lastName: {
+      type: 'string',
+      description: 'Representation of the guest\'s last name.',
+      maxLength: 120,
+    },
+
     fullName: {
       type: 'string',
-      required: true,
       description: 'Full representation of the guest\'s name.',
       maxLength: 120,
     },
@@ -40,7 +51,7 @@ module.exports = {
     },
 
     table: {
-      type: 'number',
+      type: 'string',
       required: false
     },
 
@@ -48,6 +59,11 @@ module.exports = {
       type: 'boolean',
       description: 'Mark guest age below 5 years',
       required: false
+    },
+
+    menu: {
+      type: 'string',
+      defaultsTo: 'Adulto'
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

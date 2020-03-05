@@ -1,28 +1,28 @@
 <div id="invitation-list" v-cloak>
 
   <div class="alert alert-danger fade show" role="alert" v-if="cloudError">
-    An error occured while processing your request.
+    Se produjo un error al procesar su solicitud.
     <button type="button" class="close" @click="dismiss()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="container">
-    <h1>Manage Invitations</h1>
+    <h1>Administrar invitaciones</h1>
     <hr/>
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">List</a>
+        <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">Listado</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
+        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Mensajes</a>
       </li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
         <div class="card-body">
-          <a href="/admin/invitation/create" class="btn btn-primary mb-4">Create new Invitation</a>
+          <a href="/admin/invitation/create" class="btn btn-primary mb-4">Crear invitación</a>
           <div class="alert alert-info" role="alert" v-if="invitations.length === 0">
-            There are no invitations to show. <a href="/admin/invitation/create" class="alert-link">Create new.</a>
+            No hay invitaciones para mostrar. <a href="/admin/invitation/create" class="alert-link">Crear una.</a>
           </div>
           <div v-else>
             <div class="form-group">
@@ -32,9 +32,9 @@
               <table class="table table-hover">
                 <thead class="thead-dark">
                   <tr>
-                    <th scope="col">Main Guest</th>
-                    <th scope="col" class="text-center">Sent Invitation</th>
-                    <th scope="col" class="text-center">Confirmed Invitation</th>
+                    <th scope="col">Invitado Principal</th>
+                    <th scope="col" class="text-center">Invitación enviada</th>
+                    <th scope="col" class="text-center">Invitación Confirmada</th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
@@ -48,10 +48,10 @@
                       <i :class="['fa', { 'fa-check-circle text-success': invitation.confirmed, 'fa-times-circle text-danger': !invitation.confirmed }]"></i>
                     </td>
                     <td class="text-center">
-                      <a :href="`/admin/guest/${invitation.guests.find(g => g.type === 'main').id}`" class="btn btn-warning btn-sm mr-3">GUEST DETAILS</a>
-                      <a :href="`/admin/invitation/edit/${invitation.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
-                      <button type="button" @click="(e) => resendInvitation(e, invitation.id)" class="btn btn-primary btn-sm mr-3">RESEND EMAIL</button>
-                      <button type="button" @click="(e) => deleteInvitation(e, invitation.id)" class="btn btn-danger btn-sm">DELETE</button>
+                      <a :href="`/admin/guest/${invitation.guests.find(g => g.type === 'main').id}`" class="btn btn-warning btn-sm mr-3">DETALLE INVITADO</a>
+                      <a :href="`/admin/invitation/edit/${invitation.id}`" class="btn btn-warning btn-sm mr-3">EDITAR</a>
+                      <button type="button" @click="(e) => resendInvitation(e, invitation.id)" class="btn btn-primary btn-sm mr-3">REENVIAR EMAIL</button>
+                      <button type="button" @click="(e) => deleteInvitation(e, invitation.id)" class="btn btn-danger btn-sm">ELIMINAR</button>
                     </td>
                   </tr>
                 </tbody>
@@ -67,12 +67,12 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">Who</th>
-                  <th scope="col">Message</th>
+                  <th scope="col">Quien/es</th>
+                  <th scope="col">Mensaje</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="invitation in filteredInvitations">
+                <tr v-for="invitation in invitations">
                   <td>
                     <ul style="list-style: none;">
                       <template v-for="guest in invitation.guests.map(g => g.fullName)">

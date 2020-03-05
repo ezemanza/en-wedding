@@ -1,46 +1,49 @@
 <div id="guest-details" v-cloak>
 
   <div class="container">
-    <h1 class="text-center">Guest Details</h1>
+    <h1 class="text-center">Invitado</h1>
     <div class="guest-details__container">
       <hr/>
       <dl class="row">
-        <dt class="col-sm-3">Name</dt>
+        <dt class="col-sm-3">Nombre</dt>
         <dd class="col-sm-9">{{ guest.fullName }}</dd>
       
         <dt class="col-sm-3">Email</dt>
         <dd class="col-sm-9">{{ guest.emailAddress || '-' }}</dd>
 
-        <dt class="col-sm-3">Minor</dt>
-        <dd class="col-sm-9">{{ guest.minor }}</dd>
+        <dt class="col-sm-3">¿Es menor de 5 años? </dt>
+        <dd class="col-sm-9">{{ guest.minor ? 'Si' : 'No' }}</dd>
+
+        <dt class="col-sm-3">Menú</dt>
+        <dd class="col-sm-9">{{ guest.menu }}</dd>
   
-        <dt class="col-sm-3">Type</dt>
+        <dt class="col-sm-3">Tipo</dt>
         <dd class="col-sm-9">{{ guest.type.charAt(0).toUpperCase() + guest.type.slice(1) }}</dd>
   
-        <dt class="col-sm-3">Language</dt>
+        <dt class="col-sm-3">Idioma</dt>
         <dd class="col-sm-9">{{ guest.preferredLang }}</dd>
   
-        <dt class="col-sm-3">Table</dt>
+        <dt class="col-sm-3">Mesa</dt>
         <dd class="col-sm-9">{{ guest.table }}</dd>
   
-        <dt class="col-sm-3">Has Invitation</dt>
+        <dt class="col-sm-3">¿Tiene invitación?</dt>
         <dd class="col-sm-9">
           <i v-if="guest.invitation" class="fas fa-check-circle text-success"></i>
           <i v-else class="fas fa-times-circle text-danger"></i>
         </dd>
-        <dt class="col-sm-3">Sent Invitation</dt>
+        <dt class="col-sm-3">Invitación enviada</dt>
         <dd class="col-sm-9">
           <i v-if="guest.invitation && guest.invitation.sent" class="fas fa-check-circle text-success"></i>
           <i v-else class="fas fa-times-circle text-danger"></i>
         </dd>
-        <dt class="col-sm-3">Confirmed Invitation</dt>
+        <dt class="col-sm-3">Invitación Confirmada</dt>
         <dd class="col-sm-9">
           <i v-if="guest.invitation && guest.invitation.confirmed" class="fas fa-check-circle text-success"></i>
           <i v-else class="fas fa-times-circle text-danger"></i>
         </dd>
   
         <template v-if="guest.companions && guest.companions.length > 0">
-          <dt class="col-sm-3">Companions</dt>
+          <dt class="col-sm-3">Acompañantes</dt>
           <dd class="col-sm-9">
             <dl class="row" v-for="(companion, index) in guest.companions">
               <dd class="col-sm-4">{{ companion.fullName }}</dd>
@@ -50,8 +53,8 @@
       </dl>
   
       <div class="text-right">
-        <a href="/admin/guest" class="btn btn-dark">Back</a>
-        <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-primary">Edit</a>
+        <a href="/admin/guest" class="btn btn-dark">Atrás</a>
+        <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-primary">Editar</a>
       </div>
     </div>
   </div>

@@ -1,16 +1,20 @@
 <div id="guest-list" v-cloak>
   <div class="alert alert-danger fade show" role="alert" v-if="cloudError">
-      An error occured while processing your request.
+    Se produjo un error al procesar su solicitud.
       <button type="button" class="close" @click="dismiss()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="container">
-        <h1>Manage Guests</h1>
+        <h1>Administrar invitados</h1>
         <hr/>
+<<<<<<< HEAD
         <a href="/admin/guest/create" class="btn btn-primary mb-4">Add Guest</a>
+=======
+        <a href="/admin/guest/create" class="btn btn-primary mb-4">Crear invitado</a>
+>>>>>>> version/2.0.0
         <div class="alert alert-info" role="alert" v-if="guests.length === 0">
-          There are no Guests. <a href="/admin/guest/create" class="alert-link">Create one!</a>
+          No hay invitados <a href="/admin/guest/create" class="alert-link">Crea uno!</a>
         </div>
         <div v-else>
           <div class="form-group">
@@ -20,11 +24,11 @@
             <table class="table table-hover">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">Type</th>
-                  <th scope="col" class="text-center">Has Invitation</th>
-                  <th scope="col" class="text-center">Sent Invitation</th>
-                  <th scope="col" class="text-center">Confirmed Invitation</th>
+                  <th scope="col">Nombre y apellido</th>
+                  <th scope="col">tipo</th>
+                  <th scope="col" class="text-center">¿Tiene invitación?</th>
+                  <th scope="col" class="text-center">Invitación enviada</th>
+                  <th scope="col" class="text-center">Invitación Confirmada</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -42,9 +46,9 @@
                     <i :class="['fa', { 'fa-check-circle text-success': guest.invitation && guest.invitation.confirmed, 'fas fa-times-circle text-danger': !guest.invitation || !guest.invitation.confirmed }]"></i>
                   </td>
                   <td class="text-center">
-                    <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-warning btn-sm mr-3">EDIT</a>
-                    <button v-if="guest.type === 'main' && !guest.invitation" type="button" @click="(e) => createAndSendInvitation(e, guest.id)" class="btn btn-info btn-sm">CREATE & SEND INVITATION</button>
-                    <button type="button" @click="(e) => deleteGuest(e, guest.id)" class="btn btn-danger btn-sm">DELETE</button>
+                    <a :href="`/admin/guest/edit/${guest.id}`" class="btn btn-warning btn-sm mr-3">EDITAR</a>
+                    <button v-if="guest.type === 'main' && !guest.invitation" type="button" @click="(e) => createAndSendInvitation(e, guest.id)" class="btn btn-info btn-sm">CREAR Y ENVIAR INVITACION</button>
+                    <button type="button" @click="(e) => deleteGuest(e, guest.id)" class="btn btn-danger btn-sm">ELIMINAR</button>
                   </td>
                 </tr>
               </tbody>

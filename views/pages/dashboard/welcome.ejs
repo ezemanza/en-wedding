@@ -4,35 +4,37 @@
     <hr class="no-print"/>
     <ul class="nav nav-tabs no-print">
       <li class="nav-item">
-        <a class="nav-link active" id="total-tab" data-toggle="tab" href="#total" role="tab" aria-controls="total" aria-selected="true">Totals</a>
+        <a class="nav-link active" id="total-tab" data-toggle="tab" href="#total" role="tab" aria-controls="total" aria-selected="true">Totales</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="confirmed-tab" data-toggle="tab" href="#confirmed" role="tab" aria-controls="confirmed" aria-selected="false">Confirmed</a>
+        <a class="nav-link" id="confirmed-tab" data-toggle="tab" href="#confirmed" role="tab" aria-controls="confirmed" aria-selected="false">Confirmados</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pending</a>
+        <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending" aria-selected="false">Pendientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="notcoming-tab" data-toggle="tab" href="#notcoming" role="tab" aria-controls="notcoming" aria-selected="false">Not Coming</a>
+        <a class="nav-link" id="notcoming-tab" data-toggle="tab" href="#notcoming" role="tab" aria-controls="notcoming" aria-selected="false">Rechazados</a>
       </li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane fade" id="confirmed" role="tabpanel" aria-labelledby="confirmed-tab">
         <div class="card-body">
           <div class="talbe-responsive">
-            <table class="table">
+            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th class="col-small">#</th>
-                  <th>Nombre</th>
+                  <th>Apellido y Nombre</th>
                   <th>Mesa</th>
+                  <th>Menú</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(guestConfirmed, indexConfirmed) in confirmed">
                   <th class="col-small" scope="row">{{ indexConfirmed + 1 }}</th>
-                  <td>{{ guestConfirmed.fullName}}<span class="badge badge-light ml-2" v-if="guestConfirmed.minor" style="vertical-align: text-top;">Menor de 5 años</span></td>
-                  <td>{{ guestConfirmed.table !== 0 ? guestConfirmed.table : 'Sin Mesa' }}</td>
+                  <td>{{ guestConfirmed.lastName }} {{ guestConfirmed.firstName }}</td>
+                  <td>{{ guestConfirmed.table !== '0' ? guestConfirmed.table : 'Sin Mesa' }}</td>
+                  <td>{{ guestConfirmed.menu }}</td>
                 </tr>
               </tbody>
             </table>
@@ -47,15 +49,15 @@
               <thead>
                 <tr>
                   <th class="col-small" scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Contact to confirm</th>
+                  <th scope="col">Nombre y Apellido</th>
+                  <th scope="col">Contactar para confirmar?</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(guestPending, indexPending) in pending">
                   <th class="col-small" scope="row">{{ indexPending + 1 }}</th>
                   <td>{{ guestPending.fullName}}</td>
-                  <td>{{ guestPending.type === 'main' ? 'yes' : ''}}</td>
+                  <td>{{ guestPending.type === 'main' ? 'Si' : ''}}</td>
                 </tr>
               </tbody>
             </table>
@@ -70,13 +72,13 @@
               <thead>
                 <tr>
                   <th class="col-small" scope="col">#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Nombre y Apellido</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(guestNotComing, indexNotComing) in notComing">
                   <th class="col-small" scope="row">{{ indexNotComing + 1 }}</th>
-                  <td>{{ guestNotComing.fullName}}</td>
+                  <td>{{ guestNotComing.fullName }}</td>
                 </tr>
               </tbody>
             </table>
@@ -91,34 +93,52 @@
               <div class="col-xs-12 col-sm-4">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Total Invited Guests</h5>
-                    <p class="card-text">{{total.length}}</p>
+                    <h5 class="card-title">Total Invitados</h5>
+                    <p class="card-text">{{ total.length }}</p>
                   </div>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-4 mt-4 mt-sm-0">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Total Confirmed Guests</h5>
-                    <p class="card-text">{{confirmed.length}}</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-4 mt-4 mt-sm-0">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">Total Pending Guests</h5>
-                    <p class="card-text">{{pending.length}}</p>
+                    <h5 class="card-title">Invitados Pendientes a confirmar</h5>
+                    <p class="card-text">{{ pending.length }}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div class="row mt-4">
+              <div class="col-xs-12 col-sm-4 mt-4 mt-sm-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Confirmados</h5>
+                    <p class="card-text">{{confirmed.length}}</p>
+                  </div>
+                </div>
+              </div>
               <div class="col-xs-12 col-sm-4">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title">Not Coming Guests</h5>
+                    <h5 class="card-title">No vienen</h5>
                     <p class="card-text">{{notComing.length}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xs-12 col-sm-4 mt-4 mt-sm-0">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Adultos</h5>
+                    <p class="card-text">{{ confirmed.filter(c => !c.minor).length }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Menores de 5 años</h5>
+                    <p class="card-text">{{ confirmed.filter(c => c.minor).length }}</p>
                   </div>
                 </div>
               </div>

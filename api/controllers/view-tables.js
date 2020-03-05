@@ -18,6 +18,22 @@ module.exports = {
 
 
   fn: async function () {
+    const alphabetical = (a, b, prop = 'lastName') => {
+      if (a[prop] < b[prop]) {
+        return -1;
+      }
+
+      if (a[prop] > b[prop]) {
+        return 1;
+      }
+
+      if (prop === 'firstName') {
+        return 0;
+      }
+
+      return alphabetical(a, b, 'firstName');
+    };
+
     const assigned = {};
     const unassigned = [];
 
@@ -55,7 +71,7 @@ module.exports = {
         guest.status = 'pending';
       }
 
-      if (guest.table === 0) {
+      if (guest.table === '0') {
         unassigned.push(guest);
       } else {
         if (assigned[guest.table]) {
@@ -63,12 +79,15 @@ module.exports = {
         } else {
           assigned[guest.table] = [ guest ];
         }
+
+        // Order table
+        assigned[guest.table] = assigned[guest.table].sort(alphabetical);
       }
     });
 
     return {
       assigned,
-      unassigned
+      unassigned: unassigned.sort(alphabetical)
     };
   }
 };
