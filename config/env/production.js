@@ -372,6 +372,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
+    baseUrl: 'https://www.ezeynaty.com',
     senderEmail: process.env.SENDER_EMAIL,
     senderEmailPassword: process.env.SENDER_EMAIL_PASSWORD,
   },
