@@ -372,9 +372,8 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://www.ezeynaty.com',
-    mailgunDomain: 'mg.ezeynaty.com',
-    mailgunSecret: process.env.MAILGUN_SECRET,
+    senderEmail: process.env.SENDER_EMAIL,
+    senderEmailPassword: process.env.SENDER_EMAIL_PASSWORD,
   },
 
 };

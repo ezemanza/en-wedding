@@ -40,32 +40,11 @@ module.exports.custom = {
   **************************************************************************/
   rememberMeCookieMaxAge: 30*24*60*60*1000, // 30 days
 
-  /**************************************************************************
-  *                                                                         *
-  * Automated email configuration                                           *
-  *                                                                         *
-  * Sandbox Mailgun credentials for use during development, as well as any  *
-  * other default settings related to "how" and "where" automated emails    *
-  * are sent.                                                               *
-  *                                                                         *
-  * (https://app.mailgun.com/app/domains)                                   *
-  *                                                                         *
-  **************************************************************************/
-  mailgunDomain: 'mg.ezeynaty.com',
-  //--------------------------------------------------------------------------
-  // /\  Configure these to enable support for automated emails.
-  // ||  (Important for password recovery, verification, etc.)
-  //--------------------------------------------------------------------------
-
-  // The sender that all outgoing emails will appear to come from.
-  fromEmailAddress: 'ezeynaty.13@gmail.com',
-  fromName: 'Ezequiel & Natalia',
-
   // Email address for receiving support messages & other correspondences.
   // > If you're using the default privacy policy, this will be referenced
   // > as the contact email of your "data protection officer" for the purpose
   // > of compliance with regulations such as GDPR.
-  internalEmailAddress: 'ezeynaty.13@gmail.com',
+  internalEmailAddress: 'eze.naty.13@gmail.com',
 
   // Whether to require proof of email address ownership any time a new user
   // signs up, or when an existing user attempts to change their email address.

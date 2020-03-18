@@ -98,6 +98,12 @@ module.exports = {
     invitationConfirmed: {
       description: 'Guest\'s invitation confirmed',
       model: 'invitation'
+    },
+
+    emailsSent: {
+      description: 'Emails sent to the guest.',
+      via: 'sentTo',
+      collection: 'email'
     }
   },
 
