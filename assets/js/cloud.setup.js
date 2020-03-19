@@ -155,6 +155,19 @@ Cloud.setup({
         "message",
         "invitation"
       ]
+    },
+    "resetConfirmed": {
+      "verb": "POST",
+      "url": "/api/v1/invitation/reset-confirmation"
+    },
+    "sendEmail": {
+      "verb": "POST",
+      "url": "/api/v1/email/send",
+      "args": [
+        "recipients",
+        "subject",
+        "template"
+      ]
     }
   }
 

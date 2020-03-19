@@ -72,6 +72,7 @@ parasails.registerPage('wedding', {
           this.invitation.confirmed = invitation.confirmed;
           this.invitation.fetched = true;
           this.invitation.pending = false;
+          this.confirmFormData.message = invitation.comment;
         });
     },
     handleParsingFindForm: function () {
@@ -102,6 +103,7 @@ parasails.registerPage('wedding', {
       this.invitation.confirmed = invitation.confirmed;
       this.invitation.fetched = true;
       this.invitation.pending = false;
+      this.confirmFormData.message = invitation.comment;
     },
     handleParsingConfirmForm: function () {
       // Clear out any pre-existing error messages.

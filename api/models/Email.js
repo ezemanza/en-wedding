@@ -12,14 +12,14 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    body: {
+    template: {
       type: 'string',
       description: 'Raw HTML email body'
     },
 
-    template: {
+    subject: {
       type: 'string',
-      description: 'Template used for email.'
+      description: 'The subject of the email.'
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

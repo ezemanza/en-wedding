@@ -42,9 +42,9 @@ module.exports = {
     }
 
     if (guest.type === 'main') {
-      guest = await Guest.findOne({ id }).populate('companions').populate('invitation');
+      guest = await Guest.findOne({ id }).populate('companions').populate('invitation').populate('emailsSent');
     } else {
-      guest = await Guest.findOne({ id }).populate('invitation');
+      guest = await Guest.findOne({ id }).populate('invitation').populate('emailsSent');
     }
 
     // Respond with view.

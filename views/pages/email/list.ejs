@@ -1,0 +1,27 @@
+<div id="email-list" v-cloak>
+  <div class="container">
+    <h1>Administrar emails</h1>
+    <hr/>
+    <a href="/admin/email/send" class="btn btn-primary mb-4">Redactar email</a>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Asunto</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Cantidad enviados</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="email in emails" @click="(e) => details(e, email.id)">
+            <td>{{ email.subject }}</td>
+            <td>{{ parseDate(email.createdAt) }}</td>
+            <td>{{ email.sentTo.length }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

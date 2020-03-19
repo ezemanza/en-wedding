@@ -1,0 +1,129 @@
+/* global Guest, Email */
+
+module.exports = {
+
+
+  friendlyName: 'Send',
+
+
+  description: 'Send email.',
+
+
+  inputs: {
+    recipients: {
+      required: true,
+      type: ['number'],
+      example: [1],
+      description: 'Id\'s of the guest to send the email to.'
+    },
+
+    subject: {
+      required: true,
+      type: 'string',
+      description: 'The subject of the email.'
+    },
+
+    template: {
+      required: true,
+      type: 'string',
+      description: 'The HTML template of the email.',
+    }
+  },
+
+
+  exits: {
+    success: {
+      description: 'Email sent.'
+    },
+
+    error: {
+      responseType: 'badRequest',
+      description: 'There was an error sending the email.'
+    },
+  },
+
+
+  fn: async function (inputs) {
+    const { recipients, subject, template } = inputs;
+
+    if (recipients.length === 0) {
+      throw 'error';
+    }
+
+    const guests = await Guest.find({ id: { in: recipients }}).populate('emailsSent');
+
+    if (guests.length === 0) {
+      throw 'error';
+    }
+
+    if (template) {
+      const util = require('util');
+
+      const newEmail = await Email.create({
+        template,
+        subject
+      })
+      .intercept(() => { throw 'error'; })
+      .fetch();
+
+      guests.forEach(guest => {
+        if (!guest.emailAddress) {
+          throw 'error';
+        }
+
+        const isToAddressConsideredFake = Boolean(guest.emailAddress.match(/@example\.com$/i));
+
+        const dontActuallySend = (
+          sails.config.environment === 'test' || isToAddressConsideredFake
+        );
+
+        if (dontActuallySend) {
+          sails.log(
+            'Skipped sending email, either because the "To" email address ended in "@example.com"\n'+
+            'or because the current \`sails.config.environment\` is set to "test".\n'+
+            '\n'+
+            'But anyway, here is what WOULD have been sent:\n'+
+            '-=-=-=-=-=-=-=-=-=-=-=-=-= Email log =-=-=-=-=-=-=-=-=-=-=-=-=-\n'+
+            'To: '+guest.emailAddress+'\n'+
+            'Subject: '+subject+'\n'+
+            '\n'+
+            'Body:\n'+
+            template+'\n'+
+            '-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
+          );
+        } else {
+          var deferred = sails.helpers.nodeMailer.with({
+            htmlMessage: template,
+            to: guest.emailAddress,
+            subject: subject
+          });
+
+          deferred.exec(async (err)=>{
+            if (err) {
+              sails.log.error(
+                'Background instruction failed:  Could not deliver email:\n'+
+                util.inspect(inputs,{depth:null})+'\n',
+                'Error details:\n'+
+                util.inspect(err)
+              );
+            } else {
+              await Email.addToCollection(newEmail.id, 'sentTo', guest.id);
+              await Guest.addToCollection(guest.id, 'emailsSent', newEmail.id);
+              sails.log.info(
+                'Background instruction complete:  Email sent (or at least queued):\n'+
+                util.inspect(inputs,{depth:null})
+              );
+            }
+          });
+        }
+      });
+    } else {
+      throw 'error';
+    }
+    // All done.
+    return;
+
+  }
+
+
+};

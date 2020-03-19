@@ -21,6 +21,21 @@
       <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
         <div class="card-body">
           <a href="/admin/invitation/create" class="btn btn-primary mb-4">Crear invitación</a>
+          <button class="btn btn-primary mb-4" @click="startReset()">Resetear confirmación</button>
+          <modal v-if="resetting">
+            <div class="card-body">
+              <h1>ATENCION</h1>
+              <h3>Esta a punto de resetear el estado de todas las invitaciones.</h3>
+              <h3>Está seguro?</h3>
+              <button class="btn btn-primary mb-4" @click="cancelReset()">Cancelar</button>
+              <ajax-button class="btn-danger mb-4" @click="resetConfirmation()" :syncing="loadingReset">
+                Resetear
+              </ajax-button>
+              <div class="alert alert-danger" role="alert" v-if="resettingError">
+                Hubo un error reseteando las invitaciones. Inténtelo de nuevo.
+              </div>
+            </div>
+          </modal>
           <div class="alert alert-info" role="alert" v-if="invitations.length === 0">
             No hay invitaciones para mostrar. <a href="/admin/invitation/create" class="alert-link">Crear una.</a>
           </div>

@@ -1,0 +1,43 @@
+<div id="email-send" v-cloak>
+
+  <div class="container">
+    <h1 class="text-center">Redactar email</h1>
+    <div class="email-form">
+      <hr/>
+      <ajax-form action="sendEmail" :syncing.sync="syncing" :cloud-error.sync="cloudError" @submitted="submittedForm()" :handle-parsing="handleParsingForm">
+        <div class="form-group">
+          <label for="recipients">Para</label>
+          <select id="recipients" :class="[formErrors.recipients ? 'is-invalid' : '', 'form-control']" v-model.trim="formData.recipients">
+            <option value="main">Invitados principales</option>
+            <option value="all">Todos los invitados</option>
+            <option value="single">Un invitado</option>
+          </select>
+          <div class="invalid-feedback" v-if="formErrors.recipients">Por favor, introduzca el nombre.</div>
+        </div>
+        <div class="form-group" v-if="formData.recipients === 'single'">
+          <label for="single">Invitado</label>
+          <select id="single" :class="[formErrors.single ? 'is-invalid' : '', 'form-control']" v-model.trim="formData.single">
+            <option v-for="guest in filteredGuests" :key="guest.id" :value="guest.id">{{ guest.fullName }}</option>
+          </select>
+          <div class="invalid-feedback" v-if="formErrors.single">Por favor, introduzca el nombre.</div>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Asunto</label>
+          <input class="form-control" id="subject" type="text"  :class="[formErrors.subject ? 'is-invalid' : '']" v-model.trim="formData.subject">
+          <div class="invalid-feedback" v-if="formErrors.subject">Por favor, introduzca el asunto.</div>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="template" :class="[formErrors.template ? 'is-invalid' : '']" v-model.trim="formData.template"></textarea>
+          <div class="invalid-feedback" v-if="formErrors.emailAddress">Por favor, escriba el email.</div>
+        </div>
+        <p class="text-danger" v-if="cloudError"><small>Se produjo un error al procesar su solicitud. Verifique la información e intente nuevamente.</small></p>
+        <div class="form-group text-right">
+          <a href="/admin/email" class="btn btn-dark">Atrás</a>
+          <ajax-button type="submit" :syncing="syncing" class="btn-primary">Enviar email</ajax-button>
+        </div>
+      </ajax-form>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

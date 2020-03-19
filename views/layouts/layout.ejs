@@ -66,6 +66,7 @@
           <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/guest">Invitados</a>
           <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/invitation">Invitaciones</a>
           <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/tables">Mesas</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-none d-sm-block" href="/admin/email">Emails</a>
           <div class="nav-item dropdown d-none d-sm-block">
             <a class="nav-link dropdown-toggle" id="header-account-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</a>
             <div class="dropdown-menu account-menu" aria-labelledby="header-account-menu-link">
@@ -77,6 +78,7 @@
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/guest">Invitados</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/invitation">Invitaciones</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/tables">Mesas</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/email">Emails</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/admin/logout">Salir</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
@@ -172,8 +174,12 @@
     <script src="/js/pages/invitation/details.page.js"></script>
     <script src="/js/pages/invitation/edit.page.js"></script>
     <script src="/js/pages/invitation/list.page.js"></script>
+    <script src="/js/pages/email/list.page.js"></script>
+    <script src="/js/pages/email/details.page.js"></script>
+    <script src="/js/pages/email/send.page.js"></script>
     <script src="/js/pages/tables.page.js"></script>
     <!--SCRIPTS END-->
+
     <% /* Display an overlay if the current browser is not supported.
     (Relies on `bowser`, which is loaded inline above.) */ %>
     <script>

@@ -1,0 +1,24 @@
+<div id="email-details" v-cloak>
+
+  <div class="container">
+    <h1 class="text-center">Email</h1>
+    <div class="email-details__container">
+      <hr/>
+      <dl class="row">
+        <dt class="col-sm-3">Para</dt>
+        <dd class="col-sm-9">{{ email.sentTo.map(guest => guest.fullName).join(', ') }}</dd>
+      
+        <dt class="col-sm-3">Asunto</dt>
+        <dd class="col-sm-9">{{ email.subject }}</dd>
+      </dl>
+
+      <div class="row xs-12 mb-4 template" v-html="email.template"></div>
+  
+      <div class="text-right">
+        <a href="/admin/email" class="btn btn-dark">Atrás</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

@@ -40,6 +40,10 @@ module.exports.routes = {
   'GET /admin/invitation/:id':      { action: 'invitation/view-details' },
   'GET /admin/invitation':          { action: 'invitation/view-list' },
 
+  'GET /admin/email':          { action: 'email/view-list' },
+  'GET /admin/email/send':          { action: 'email/view-send' },
+  'GET /admin/email/:id':       { action: 'email/view-details' },
+
   'GET /admin/tables':              { action: 'view-tables' },
 
   'GET /error':                     { action: 'view-error' },
@@ -77,5 +81,7 @@ module.exports.routes = {
   'DELETE  /api/v1/invitation/delete':                    { action: 'invitation/delete' },
   'POST /api/v1/invitation/resend-email':                 { action: 'invitation/resend-email' },
   'GET /api/v1/invitation/get':                           { action: 'invitation/get' },
-  'POST /api/v1/invitation/confirm':                      { action: 'invitation/confirm' }
+  'POST /api/v1/invitation/confirm':                      { action: 'invitation/confirm' },
+  'POST /api/v1/email/send':                              { action: 'email/send' },
+  'POST /api/v1/invitation/reset-confirmation':           { action: 'invitation/reset-confirmation' },
 };

@@ -5,7 +5,10 @@ parasails.registerPage('invitation-list', {
   data: {
     cloudError: false,
     search: '',
-    invitations: []
+    invitations: [],
+    resetting: false,
+    loadingReset: false,
+    resettingError: false
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -66,6 +69,29 @@ parasails.registerPage('invitation-list', {
 
     dismiss: function () {
       this.cloudError = false;
+    },
+
+    startReset () {
+      this.resetting = true;
+    },
+
+    cancelReset () {
+      this.resetting = false;
+      this.resettingError = false;
+    },
+
+    resetConfirmation: async function () {
+      this.loadingReset = true;
+      this.resettingError = false;
+      const result = await Cloud.resetConfirmed();
+      this.loadingReset = false;
+
+      if (result === 'OK') {
+        this.resetting = false;
+        window.location = '/admin/invitation';
+      } else {
+        this.resettingError = true;
+      }
     }
   }
 });
