@@ -19,7 +19,7 @@ module.exports = {
 
   fn: async function () {
 
-    const guests = await Guest.find().populate('companions').populate('invitation');
+    const guests = await Guest.find();
 
     const alphabetical = (a, b, prop = 'lastName') => {
       if (a[prop] < b[prop]) {

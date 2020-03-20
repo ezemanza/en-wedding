@@ -19,6 +19,12 @@ parasails.registerPage('email-list', {
     }
   },
 
+  computed: {
+    sortedEmails ({ emails }) {
+      return emails.slice().sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+    }
+  },
+
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
@@ -29,7 +35,7 @@ parasails.registerPage('email-list', {
     },
 
     parseDate (date) {
-      return moment(date).format('DD-MM-YYYY HH:mm');
+      return moment(date).format('DD-MM-YYYY - HH:mm');
     }
   }
 });

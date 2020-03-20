@@ -126,6 +126,7 @@ var jsFilesToInject = [
   '/js/pages/email/list.page.js',
   '/js/pages/email/details.page.js',
   '/js/pages/email/send.page.js',
+  '/js/pages/email/resend.page.js',
   '/js/pages/tables.page.js'
 ];
 

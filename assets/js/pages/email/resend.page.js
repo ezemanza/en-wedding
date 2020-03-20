@@ -1,9 +1,10 @@
-parasails.registerPage('email-send', {
+parasails.registerPage('email-resend', {
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
     guests: [],
+    email: {},
     // Form data
     formData: {
       recipients: 'all',
@@ -31,8 +32,14 @@ parasails.registerPage('email-send', {
     _.extend(this, SAILS_LOCALS);
   },
   mounted: async function() {
-    if (SAILS_LOCALS.guests) {
+    if (SAILS_LOCALS.email && SAILS_LOCALS.guests) {
+      this.email = SAILS_LOCALS.email;
       this.guests = SAILS_LOCALS.guests;
+
+      this.formData.subject = this.email.subject;
+      this.formData.template = this.email.template;
+    } else {
+      window.location = '/admin/error';
     }
   },
 
@@ -90,6 +97,8 @@ parasails.registerPage('email-send', {
       } else {
         argins.template = this.formData.template;
       }
+
+      argins.id = this.email.id;
 
       // If there were any issues, they've already now been communicated to the user,
       // so simply return undefined.  (This signifies that the submission should be

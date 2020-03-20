@@ -1,32 +1,26 @@
 /* global Guest, Email */
-
 module.exports = {
 
 
-  friendlyName: 'Send',
+  friendlyName: 'Resend',
 
 
-  description: 'Send email.',
+  description: 'Resend email.',
 
 
   inputs: {
+    id: {
+      required: true,
+      type: 'number',
+      example: 1,
+      description: 'Id of the email to resend'
+    },
+
     recipients: {
       required: true,
       type: ['number'],
       example: [1],
       description: 'Id\'s of the guest to send the email to.'
-    },
-
-    subject: {
-      required: true,
-      type: 'string',
-      description: 'The subject of the email.'
-    },
-
-    template: {
-      required: true,
-      type: 'string',
-      description: 'The HTML template of the email.',
     }
   },
 
@@ -40,13 +34,18 @@ module.exports = {
       responseType: 'badRequest',
       description: 'There was an error sending the email.'
     },
+
+    notFound: {
+      responseType: 'badRequest',
+      description: 'Email with the provided ID not found.'
+    }
   },
 
 
   fn: async function (inputs) {
-    const { recipients, subject, template } = inputs;
+    const { recipients, id } = inputs;
 
-    if (recipients.length === 0) {
+    if (recipients.length === 0 || !id) {
       throw 'error';
     }
 
@@ -56,15 +55,16 @@ module.exports = {
       throw 'error';
     }
 
-    if (template) {
-      const util = require('util');
+    const email = await Email.findOne({
+      id: inputs.id
+    });
 
-      const newEmail = await Email.create({
-        template,
-        subject
-      })
-      .intercept(() => { throw 'error'; })
-      .fetch();
+    if (!email) {
+      throw 'notFound';
+    } else {
+      const { subject, template } = email;
+
+      const util = require('util');
 
       guests.forEach((guest, index) => {
         if (!guest.emailAddress) {
@@ -108,8 +108,8 @@ module.exports = {
                   util.inspect(err)
                 );
               } else {
-                await Email.addToCollection(newEmail.id, 'sentTo', guest.id);
-                await Guest.addToCollection(guest.id, 'emailsSent', newEmail.id);
+                await Email.addToCollection(email.id, 'sentTo', guest.id);
+                await Guest.addToCollection(guest.id, 'emailsSent', email.id);
                 sails.log.info(
                   'Background instruction complete:  Email sent (or at least queued):\n'+
                   util.inspect(Object.assign({}, inputs, { recipient: guest.id }),{depth:null})
@@ -119,9 +119,9 @@ module.exports = {
           }, 5000 * index);
         }
       });
-    } else {
-      throw 'error';
     }
+
+
     // All done.
     return;
 

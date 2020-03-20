@@ -60,10 +60,10 @@ module.exports = {
       html: htmlMessage
     }, (error) => {
       if (error) {
-        return exits.error(error);
+        return exits.error({ error });
       }
 
-      return exits.success();
+      return exits.success({ success: true });
     });
   }
 };

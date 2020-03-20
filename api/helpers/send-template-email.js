@@ -59,13 +59,6 @@ module.exports = {
         'from `views/layouts/`) to an override email layout.',
       defaultsTo: 'layout-email',
       custom: (layout)=>layout===false || _.isString(layout)
-    },
-
-    ensureAck: {
-      description: 'Whether to wait for acknowledgement (to hear back) that the email was successfully sent (or at least queued for sending) before returning.',
-      extendedDescription: 'Otherwise by default, this returns immediately and delivers the request to deliver this email in the background.',
-      type: 'boolean',
-      defaultsTo: false
     }
 
   },
@@ -178,26 +171,21 @@ module.exports = {
         subject: inputs.subject
       });
 
-      if (inputs.ensureAck) {
-        await deferred;
-      } else {
-        // FUTURE: take advantage of .background() here instead (when available)
-        deferred.exec((err)=>{
-          if (err) {
-            sails.log.error(
-              'Background instruction failed:  Could not deliver email:\n'+
-              util.inspect(inputs,{depth:null})+'\n',
-              'Error details:\n'+
-              util.inspect(err)
-            );
-          } else {
-            sails.log.info(
-              'Background instruction complete:  Email sent (or at least queued):\n'+
-              util.inspect(inputs,{depth:null})
-            );
-          }
-        });//_∏_
-      }//ﬁ
+      deferred.exec((err)=>{
+        if (err) {
+          sails.log.error(
+            'Background instruction failed:  Could not deliver email:\n'+
+            util.inspect(inputs,{depth:null})+'\n',
+            'Error details:\n'+
+            util.inspect(err)
+          );
+        } else {
+          sails.log.info(
+            'Background instruction complete:  Email sent (or at least queued):\n'+
+            util.inspect(inputs,{depth:null})
+          );
+        }
+      });//_∏_
     }//ﬁ
 
     // All done!

@@ -8,14 +8,14 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Asunto</th>
-            <th scope="col">Fecha</th>
+            <th scope="col">Enviado</th>
             <th scope="col">Cantidad enviados</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="email in emails" @click="(e) => details(e, email.id)">
+          <tr v-for="email in sortedEmails" @click="(e) => details(e, email.id)">
             <td>{{ email.subject }}</td>
-            <td>{{ parseDate(email.createdAt) }}</td>
+            <td>{{ parseDate(email.updatedAt) }}</td>
             <td>{{ email.sentTo.length }}</td>
           </tr>
         </tbody>

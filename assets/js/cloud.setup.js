@@ -168,6 +168,14 @@ Cloud.setup({
         "subject",
         "template"
       ]
+    },
+    "resendEmail": {
+      "verb": "POST",
+      "url": "/api/v1/email/resend",
+      "args": [
+        "recipients",
+        "id"
+      ]
     }
   }
 
