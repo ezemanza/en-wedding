@@ -57,12 +57,22 @@ module.exports = {
 
     const email = await Email.findOne({
       id: inputs.id
-    });
+    }).populate('sentTo');
 
     if (!email) {
       throw 'notFound';
     } else {
       const { subject, template } = email;
+
+      let recipients = email.recipients;
+
+      if(!recipients) {
+        recipients = email.sentTo.map(guest => guest.emailAddress).join(', ');
+      }
+
+      await Email.update({ id: inputs.id }).set({
+        recipients: `${ email.recipients ? `${email.recipients}, ` : ''}${guests.map(guest => guest.emailAddress).join(', ')}`
+      });
 
       const util = require('util');
 
@@ -93,7 +103,7 @@ module.exports = {
           );
         } else {
           setTimeout(async () => {
-            var deferred = sails.helpers.nodeMailer.with({
+            var deferred = sails.helpers.mailgun.sendHtmlEmail.with({
               htmlMessage: template.replace(/(?:\r\n|\r|\n)/g, '<br>'),
               to: guest.emailAddress,
               subject: subject

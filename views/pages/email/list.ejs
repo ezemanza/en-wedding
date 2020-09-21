@@ -9,6 +9,7 @@
           <tr>
             <th scope="col">Asunto</th>
             <th scope="col">Enviado</th>
+            <th scope="col">Destinatarios</th>
             <th scope="col">Cantidad enviados</th>
           </tr>
         </thead>
@@ -16,6 +17,7 @@
           <tr v-for="email in sortedEmails" @click="(e) => details(e, email.id)">
             <td>{{ email.subject }}</td>
             <td>{{ parseDate(email.updatedAt) }}</td>
+            <td>{{ email.recipients }}</td>
             <td>{{ email.sentTo.length }}</td>
           </tr>
         </tbody>

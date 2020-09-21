@@ -40,6 +40,10 @@ module.exports = {
       throw 'notFound';
     }
 
+    if (!email.recipients) {
+      email.recipients = email.sentTo.map(guest => guest.emailAddress).join(', ');
+    }
+
     const guests = await Guest.find();
 
     const alphabetical = (a, b, prop = 'lastName') => {

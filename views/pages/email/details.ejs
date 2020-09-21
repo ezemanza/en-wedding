@@ -6,6 +6,9 @@
       <hr/>
       <dl class="row">
         <dt class="col-sm-3">Para</dt>
+        <dd class="col-sm-9">{{ email.recipients }}</dd>
+
+        <dt class="col-sm-3">Enviado a</dt>
         <dd class="col-sm-9">{{ email.sentTo.map(guest => guest.fullName).join(', ') }}</dd>
       
         <dt class="col-sm-3">Asunto</dt>

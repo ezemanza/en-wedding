@@ -21,7 +21,15 @@ parasails.registerPage('email-list', {
 
   computed: {
     sortedEmails ({ emails }) {
-      return emails.slice().sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      const sortedEmails = emails.slice();
+      sortedEmails.forEach(email => {
+        if (!email.recipients) {
+          email.recipients = 0;
+        } else {
+          email.recipients = email.recipients.split(', ').length;
+        }
+      });
+      return sortedEmails.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
     }
   },
 

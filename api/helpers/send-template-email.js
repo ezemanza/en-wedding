@@ -59,6 +59,13 @@ module.exports = {
         'from `views/layouts/`) to an override email layout.',
       defaultsTo: 'layout-email',
       custom: (layout)=>layout===false || _.isString(layout)
+    },
+
+    ensureAck: {
+      description: 'Whether to wait for acknowledgement (to hear back) that the email was successfully sent (or at least queued for sending) before returning.',
+      extendedDescription: 'Otherwise by default, this returns immediately and delivers the request to deliver this email in the background.',
+      type: 'boolean',
+      defaultsTo: false
     }
 
   },
@@ -165,27 +172,61 @@ module.exports = {
       // Otherwise, we'll check that all required Mailgun credentials are set up
       // and, if so, continue to actually send the email.
 
-      var deferred = sails.helpers.nodeMailer.with({
+      if (!sails.config.custom.mailgunSecret || !sails.config.custom.mailgunDomain) {
+        throw new Error(
+          'Cannot deliver email to "'+inputs.to+'" because:\n'+
+          (()=>{
+            let problems = [];
+            if (!sails.config.custom.mailgunSecret) {
+              problems.push(' • Mailgun secret is missing from this app\'s configuration (`sails.config.custom.mailgunSecret`)');
+            }
+            if (!sails.config.custom.mailgunDomain) {
+              problems.push(' • Mailgun domain is missing from this app\'s configuration (`sails.config.custom.mailgunDomain`)');
+            }
+            return problems.join('\n');
+          })()+
+          '\n'+
+          'To resolve these configuration issues, add the missing config variables to\n'+
+          '\`config/custom.js\`-- or in staging/production, set them up as system\n'+
+          'environment vars.  (If you don\'t have a Mailgun domain or secret, you can\n'+
+          'sign up for free at https://mailgun.com to receive sandbox credentials.)\n'+
+          '\n'+
+          '> Note that, for convenience during development, there is another alternative:\n'+
+          '> In lieu of setting up real Mailgun credentials, you can "fake" email\n'+
+          '> delivery by using any email address that ends in "@example.com".  This will\n'+
+          '> write automated emails to your logs rather than actually sending them.\n'+
+          '> (To simulate clicking on a link from an email, just copy and paste the link\n'+
+          '> from the terminal output into your browser.)\n'+
+          '\n'+
+          '[?] If you\'re unsure, visit https://sailsjs.com/support'
+        );
+      }
+
+      var deferred = sails.helpers.mailgun.sendHtmlEmail.with({
         htmlMessage: htmlEmailContents,
         to: inputs.to,
         subject: inputs.subject
       });
 
-      deferred.exec((err)=>{
-        if (err) {
-          sails.log.error(
-            'Background instruction failed:  Could not deliver email:\n'+
-            util.inspect(inputs,{depth:null})+'\n',
-            'Error details:\n'+
-            util.inspect(err)
-          );
-        } else {
-          sails.log.info(
-            'Background instruction complete:  Email sent (or at least queued):\n'+
-            util.inspect(inputs,{depth:null})
-          );
-        }
-      });//_∏_
+      if (inputs.ensureAck) {
+        await deferred;
+      } else {
+        deferred.exec((err)=>{
+          if (err) {
+            sails.log.error(
+              'Background instruction failed:  Could not deliver email:\n'+
+              util.inspect(inputs,{depth:null})+'\n',
+              'Error details:\n'+
+              util.inspect(err)
+            );
+          } else {
+            sails.log.info(
+              'Background instruction complete:  Email sent (or at least queued):\n'+
+              util.inspect(inputs,{depth:null})
+            );
+          }
+        });//_∏_
+      }//ﬁ
     }//ﬁ
 
     // All done!

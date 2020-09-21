@@ -61,12 +61,13 @@ module.exports = {
 
       const newEmail = await Email.create({
         template,
-        subject
+        subject,
+        recipients: guests.map(guest => guest.emailAddress).join(', ')
       })
       .intercept(() => { throw 'error'; })
       .fetch();
 
-      guests.forEach((guest, index) => {
+      guests.forEach((guest) => {
         if (!guest.emailAddress) {
           throw 'error';
         }
@@ -92,31 +93,29 @@ module.exports = {
             '-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-'
           );
         } else {
-          setTimeout(async () => {
-            var deferred = sails.helpers.nodeMailer.with({
-              htmlMessage: template.replace(/(?:\r\n|\r|\n)/g, '<br>'),
-              to: guest.emailAddress,
-              subject: subject
-            });
+          var deferred = sails.helpers.mailgun.sendHtmlEmail.with({
+            htmlMessage: template.replace(/(?:\r\n|\r|\n)/g, '<br>'),
+            to: guest.emailAddress,
+            subject: subject
+          });
 
-            deferred.exec(async (err)=>{
-              if (err) {
-                sails.log.error(
-                  'Background instruction failed:  Could not deliver email:\n'+
-                  util.inspect(Object.assign({}, inputs, { recipient: guest.id }),{depth:null})+'\n',
-                  'Error details:\n'+
-                  util.inspect(err)
-                );
-              } else {
-                await Email.addToCollection(newEmail.id, 'sentTo', guest.id);
-                await Guest.addToCollection(guest.id, 'emailsSent', newEmail.id);
-                sails.log.info(
-                  'Background instruction complete:  Email sent (or at least queued):\n'+
-                  util.inspect(Object.assign({}, inputs, { recipient: guest.id }),{depth:null})
-                );
-              }
-            });
-          }, 5000 * index);
+          deferred.exec(async (err)=>{
+            if (err) {
+              sails.log.error(
+                'Background instruction failed:  Could not deliver email:\n'+
+                util.inspect(Object.assign({}, inputs, { recipient: guest.id }),{depth:null})+'\n',
+                'Error details:\n'+
+                util.inspect(err)
+              );
+            } else {
+              await Email.addToCollection(newEmail.id, 'sentTo', guest.id);
+              await Guest.addToCollection(guest.id, 'emailsSent', newEmail.id);
+              sails.log.info(
+                'Background instruction complete:  Email sent (or at least queued):\n'+
+                util.inspect(Object.assign({}, inputs, { recipient: guest.id }),{depth:null})
+              );
+            }
+          });
         }
       });
     } else {

@@ -373,8 +373,9 @@ module.exports = {
   ***************************************************************************/
   custom: {
     baseUrl: 'https://www.ezeynaty.com',
-    senderEmail: process.env.SENDER_EMAIL,
-    senderEmailPassword: process.env.SENDER_EMAIL_PASSWORD,
+    fromEmailAddress: 'eze.naty.13@gmail.com',
+    mailgunDomain: 'mg.ezeynaty.com',
+    mailgunSecret: process.env.MAILGUN_SECRET,
   },
 
 };

@@ -37,6 +37,10 @@ module.exports = {
 
     let email = await Email.findOne({ id }).populate('sentTo');
 
+    if (!email.recipients) {
+      email.recipients = email.sentTo.map(guest => guest.emailAddress).join(', ');
+    }
+
     if(!email) {
       throw 'notFound';
     }

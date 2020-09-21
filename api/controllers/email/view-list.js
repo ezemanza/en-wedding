@@ -20,7 +20,12 @@ module.exports = {
   fn: async function () {
     const emails = await Email.find().populate('sentTo');
 
-    // TODO: order by created date
+    emails.forEach(email => {
+      if (!email.recipients) {
+        email.recipients = email.sentTo.map(guest => guest.emailAddress).join(', ');
+      }
+    });
+
 
     // Respond with view.
     return {

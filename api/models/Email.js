@@ -22,6 +22,11 @@ module.exports = {
       description: 'The subject of the email.'
     },
 
+    recipients: {
+      type: 'string',
+      description: 'List of recipients emails'
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
