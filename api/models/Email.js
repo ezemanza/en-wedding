@@ -13,7 +13,7 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     template: {
-      type: 'string',
+      type: 'longtext',
       description: 'Raw HTML email body'
     },
 
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     recipients: {
-      type: 'string',
+      type: 'longtext',
       description: 'List of recipients emails'
     },
 
