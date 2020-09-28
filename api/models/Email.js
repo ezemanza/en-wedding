@@ -14,6 +14,7 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     template: {
       type: 'longtext',
+      columnType: 'longtext',
       description: 'Raw HTML email body'
     },
 
@@ -24,6 +25,7 @@ module.exports = {
 
     recipients: {
       type: 'longtext',
+      columnType: 'longtext',
       description: 'List of recipients emails'
     },
 
