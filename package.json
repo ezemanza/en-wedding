@@ -1,7 +1,7 @@
 {
   "name": "en-wedding",
   "private": true,
-  "version": "2.0.24",
+  "version": "2.0.25",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
