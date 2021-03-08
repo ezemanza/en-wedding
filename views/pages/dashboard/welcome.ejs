@@ -32,7 +32,7 @@
               <tbody>
                 <tr v-for="(guestConfirmed, indexConfirmed) in confirmed">
                   <th class="col-small" scope="row">{{ indexConfirmed + 1 }}</th>
-                  <td>{{ guestConfirmed.lastName }} {{ guestConfirmed.firstName }}</td>
+                  <td>{{ guestConfirmed.lastName }}, {{ guestConfirmed.firstName }} {{ guestConfirmed.minor ? '(menor de 5 años)' : ''}}</td>
                   <td>{{ guestConfirmed.table !== '0' ? guestConfirmed.table : 'Sin Mesa' }}</td>
                   <td>{{ guestConfirmed.menu }}</td>
                 </tr>
