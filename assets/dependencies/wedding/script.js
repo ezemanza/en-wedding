@@ -323,7 +323,7 @@ $(document).ready(function () {
 	// 07. COUNTDOWN
 	//===================================================================================
 	var userTZ = moment.tz.guess(true);
-	var theday = moment.tz("2021-03-20 16:00", "America/Argentina/Buenos_Aires");
+	var theday = moment.tz("2021-03-20 18:00", "America/Argentina/Buenos_Aires");
 	var theDayUserTz = moment(theday).tz(userTZ).toDate();
 	$('#countdown').countdown({ until: theDayUserTz, format: 'DHMS' });
 	$('#countdown').countdown($.countdown.regionalOptions['custom-label']);
