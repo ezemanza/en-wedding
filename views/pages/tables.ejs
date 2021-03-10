@@ -23,9 +23,23 @@
             <div class="row print">
               <div class="col-xs-12 col-sm-4 mb-4 print-column" v-for="(table, key) in assigned">
                 <div class="card" style="page-break-inside: avoid;">
-                  <div class="card-body">
-                    <h5 class="card-title">Mesa {{key}}</h5>
-                    <p :class="['card-text', { 'text-danger': guest.status === 'notComing', 'text-warning': guest.status === 'pending' }]" v-for="guest in table">{{guest.fullName}}</p>
+                  <div class="card-header">
+                    <h5>Mesa {{key}}</h5>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" v-for="guest in table">
+                      <p :class="['mb-1', { 'text-danger': guest.status === 'notComing', 'text-warning': guest.status === 'pending' }]">{{ guest.fullName }}</p>
+                      <small>{{ `${guest.minor ? 'Menor' : 'Adulto'} | Menú: ${guest.menu}` }}</small>
+                    </li>
+                  </ul>
+                  <div class="card-footer text-muted">
+                    <p>Adultos: {{ table.filter(g => !g.minor).length }}</p>
+                    <p v-if="table.filter(g => g.minor).length > 0">Menores: {{ table.filter(g => g.minor).length }}</p>
+                    <p v-if="table.filter(g => g.menu === 'Adulto').length > 0">Menú Adulto: {{ table.filter(g => g.menu === 'Adulto').length }}</p>
+                    <p v-if="table.filter(g => g.menu === 'Celíaco').length > 0">Menú Celíaco: {{ table.filter(g => g.menu === 'Celíaco').length }}</p>
+                    <p v-if="table.filter(g => g.menu === 'Infantil').length > 0">Menú Infantil: {{ table.filter(g => g.menu === 'Infantil').length }}</p>
+                    <p v-if="table.filter(g => g.menu === 'Vegetariano').length > 0">Menú Vegetariano: {{ table.filter(g => g.menu === 'Vegetariano').length }}</p>
+                    <p v-if="table.filter(g => g.menu === 'Vegano').length > 0">Menú Vegano: {{ table.filter(g => g.menu === 'Vegano').length }}</p>
                   </div>
                 </div>
               </div>
