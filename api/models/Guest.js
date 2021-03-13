@@ -66,6 +66,16 @@ module.exports = {
       defaultsTo: 'Adulto'
     },
 
+    dni: {
+      type: 'number',
+      required: false
+    },
+
+    birthDate: {
+      type: 'string',
+      required: false
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

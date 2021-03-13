@@ -27,6 +27,8 @@
                   <th>Apellido y Nombre</th>
                   <th>Mesa</th>
                   <th>Menú</th>
+                  <th>DNI</th>
+                  <th>Fecha de nacimiento</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,6 +37,8 @@
                   <td>{{ guestConfirmed.lastName }}, {{ guestConfirmed.firstName }} {{ guestConfirmed.minor ? '(menor de 5 años)' : ''}}</td>
                   <td>{{ guestConfirmed.table !== '0' ? guestConfirmed.table : 'Sin Mesa' }}</td>
                   <td>{{ guestConfirmed.menu }}</td>
+                  <td>{{ guestConfirmed.dni }}</td>
+                  <td>{{ guestConfirmed.birthDate }}</td>
                 </tr>
               </tbody>
             </table>

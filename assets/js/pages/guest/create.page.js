@@ -12,7 +12,9 @@ parasails.registerPage('guest-create', {
       companions: [],
       table: 0,
       minor: false,
-      menu: ''
+      menu: '',
+      dni: 0,
+      birthDate: ''
     },
 
     backup: {

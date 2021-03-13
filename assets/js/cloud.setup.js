@@ -86,7 +86,9 @@ Cloud.setup({
         "preferredLang",
         "table",
         "minor",
-        "menu"
+        "menu",
+        "dni",
+        "birthDate"
       ]
     },
     "editGuest": {
@@ -102,7 +104,9 @@ Cloud.setup({
         "preferredLang",
         "table",
         "minor",
-        "menu"
+        "menu",
+        "dni",
+        "birthDate"
       ]
     },
     "deleteGuest": {

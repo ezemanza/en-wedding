@@ -72,6 +72,20 @@ module.exports = {
       example: 'Adulto',
       description: 'Guest menu'
     },
+
+    dni: {
+      type: 'number',
+      required: false,
+      example: 34567879,
+      description: 'Guest DNI'
+    },
+
+    birthDate: {
+      type: 'string',
+      required: false,
+      example: '28/12/1989',
+      description: 'Guest birth date'
+    },
   },
 
 
@@ -97,7 +111,9 @@ module.exports = {
       preferredLang: inputs.preferredLang,
       table: inputs.table,
       minor: inputs.minor,
-      menu: inputs.menu
+      menu: inputs.menu,
+      dni: inputs.dni,
+      birthDate: inputs.birthDate
     })
     .intercept(() => { throw 'error'; })
     .fetch();

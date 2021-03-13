@@ -15,7 +15,9 @@ parasails.registerPage('guest-edit', {
       preferredLang: '',
       table: null,
       minor: null,
-      menu: ''
+      menu: '',
+      dni: 0,
+      birthDate: ''
     },
     backup: {
       companions: []
@@ -51,7 +53,9 @@ parasails.registerPage('guest-edit', {
         preferredLang,
         table,
         minor,
-        menu
+        menu,
+        dni,
+        birthDate
       } = SAILS_LOCALS.guest;
 
       this.formData.id = id;
@@ -65,6 +69,8 @@ parasails.registerPage('guest-edit', {
       this.formData.table = table;
       this.formData.minor = minor;
       this.formData.menu = menu;
+      this.formData.dni = dni;
+      this.formData.birthDate = birthDate;
       this.backup.companions = companions || [];
     } else {
       window.location = '/admin/error';
